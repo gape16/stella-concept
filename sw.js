@@ -1,4 +1,4 @@
-const CACHE_NAME = 'stella-concept-v1';
+const CACHE_NAME = 'stella-concept-v3';
 const ASSETS = [
   '/',
   '/index.html',
@@ -25,16 +25,19 @@ self.addEventListener('activate', (e) => {
   self.clients.claim();
 });
 
+// Network-first strategy: always try fresh content, fallback to cache
 self.addEventListener('fetch', (e) => {
   e.respondWith(
-    caches.match(e.request).then((cached) => {
-      return cached || fetch(e.request).then((response) => {
-        if (e.request.method === 'GET' && response.status === 200) {
-          const clone = response.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put(e.request, clone));
-        }
-        return response;
+    fetch(e.request).then((response) => {
+      if (e.request.method === 'GET' && response.status === 200) {
+        const clone = response.clone();
+        caches.open(CACHE_NAME).then((cache) => cache.put(e.request, clone));
+      }
+      return response;
+    }).catch(() => {
+      return caches.match(e.request).then((cached) => {
+        return cached || caches.match('/index.html');
       });
-    }).catch(() => caches.match('/index.html'))
+    })
   );
 });

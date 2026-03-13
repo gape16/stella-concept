@@ -157,7 +157,7 @@
   left: 0;
   width: 0;
   height: 1px;
-  background: var(--color-lime);
+  background: var(--color-magenta);
   transition: width var(--transition);
 }
 
