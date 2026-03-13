@@ -561,6 +561,36 @@ p {
   color: var(--color-magenta);
 }
 
+/* Nav CTA Button */
+.btn--nav-cta {
+  background: linear-gradient(135deg, var(--color-magenta), var(--color-orange));
+  color: #fff !important;
+  padding: 0.55rem 1.4rem;
+  border-radius: 50px;
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border: none;
+  box-shadow: 0 3px 12px rgba(192, 66, 138, 0.3);
+  transition: all var(--transition);
+  white-space: nowrap;
+}
+
+.btn--nav-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(192, 66, 138, 0.4);
+  color: #fff !important;
+}
+
+.btn--nav-cta::after {
+  display: none !important;
+}
+
+.nav--scrolled .btn--nav-cta {
+  color: #fff !important;
+}
+
 /* Hamburger */
 .hamburger {
   display: none;
