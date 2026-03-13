@@ -26,8 +26,8 @@
  */
 
 // ====== CONFIGURATION ======
-var CALENDAR_ID = 'estelle@gmail.com'; // Remplacer par l'email du Google Agenda
-var NOTIFICATION_EMAIL = 'estelle@gmail.com'; // Email pour les notifications
+var CALENDAR_ID = 'contact.stellaconcept@gmail.com';
+var NOTIFICATION_EMAIL = 'contact.stellaconcept@gmail.com';
 var SLOT_DURATION = 30; // Duree d'un creneau en minutes
 var TIMEZONE = 'Europe/Paris';
 
