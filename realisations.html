@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Realisations - Stella'Concept | Galerie avant/apres</title>
+  <meta name="description" content="Decouvrez nos realisations en images : projets de renovation, reamenagement et accompagnement transition de vie avant et apres.">
+  <meta property="og:title" content="Realisations - Stella'Concept">
+  <meta property="og:description" content="Nos projets en images : avant / apres.">
+  <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#544957">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <style>:root { --accent: #CCD537; }</style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" aria-label="Navigation principale">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="Stella'Concept - Accueil">
+        <img src="img/logotype_secondaire.svg" alt="Stella'Concept" class="nav__logo-img">
+      </a>
+      <div class="nav__links" role="menubar">
+        <a href="index.html" role="menuitem">Accueil</a>
+        <a href="services-travaux.html" role="menuitem">Accompagnement travaux</a>
+        <a href="services-transition.html" role="menuitem">Transition de vie</a>
+        <a href="a-propos.html" role="menuitem">A propos</a>
+        <a href="faq.html" role="menuitem">FAQ</a>
+        <a href="contact.html" role="menuitem">Contact</a>
+      </div>
+      <button class="hamburger" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span class="hamburger__bar"></span>
+        <span class="hamburger__bar"></span>
+        <span class="hamburger__bar"></span>
+      </button>
+    </div>
+    <div class="nav__overlay"></div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero hero--compact">
+    <div class="hero__bg" style="background-color: var(--color-primary);"></div>
+    <div class="hero__overlay" style="background: var(--color-primary);"></div>
+    <div class="hero__content">
+      <span class="section__subtitle">Portfolio</span>
+      <h1>Nos realisations</h1>
+      <p>Decouvrez quelques-uns de nos projets d'accompagnement en images.</p>
+    </div>
+  </section>
+
+  <!-- Filtres -->
+  <section class="section">
+    <div class="container">
+      <div class="gallery-filters reveal" role="tablist">
+        <button class="gallery-filter active" data-filter="all" role="tab" aria-selected="true">Tous</button>
+        <button class="gallery-filter" data-filter="travaux" role="tab" aria-selected="false">Travaux</button>
+        <button class="gallery-filter" data-filter="transition" role="tab" aria-selected="false">Transition</button>
+      </div>
+
+      <!-- Galerie -->
+      <div class="gallery reveal-stagger">
+
+        <div class="gallery-item" data-category="travaux">
+          <div class="gallery-item__compare">
+            <div class="gallery-item__before">
+              <img src="https://images.unsplash.com/photo-1534237710431-e2fc698436d0?w=600&q=80" alt="Cuisine avant renovation" loading="lazy">
+              <span class="gallery-item__label">Avant</span>
+            </div>
+            <div class="gallery-item__after">
+              <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80" alt="Cuisine apres renovation" loading="lazy">
+              <span class="gallery-item__label gallery-item__label--after">Apres</span>
+            </div>
+          </div>
+          <div class="gallery-item__info">
+            <span class="badge" style="background:#F1980D;">Travaux</span>
+            <h3>Renovation cuisine complete</h3>
+            <p>Transformation d'une cuisine des annees 80 en espace moderne et fonctionnel. Angouleme.</p>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-category="transition">
+          <div class="gallery-item__compare">
+            <div class="gallery-item__before">
+              <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&q=80" alt="Piece encombrée avant tri" loading="lazy">
+              <span class="gallery-item__label">Avant</span>
+            </div>
+            <div class="gallery-item__after">
+              <img src="https://images.unsplash.com/photo-1616046229478-9901c5536a45?w=600&q=80" alt="Piece organisee apres tri" loading="lazy">
+              <span class="gallery-item__label gallery-item__label--after">Apres</span>
+            </div>
+          </div>
+          <div class="gallery-item__info">
+            <span class="badge" style="background:#C0428A;color:#fff;">Transition</span>
+            <h3>Desencombrement & reorganisation</h3>
+            <p>Accompagnement apres un depart des enfants. Repenser l'espace pour un nouveau chapitre.</p>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-category="travaux">
+          <div class="gallery-item__compare">
+            <div class="gallery-item__before">
+              <img src="https://images.unsplash.com/photo-1523413363574-c30aa1c2a516?w=600&q=80" alt="Salle de bain avant renovation" loading="lazy">
+              <span class="gallery-item__label">Avant</span>
+            </div>
+            <div class="gallery-item__after">
+              <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=600&q=80" alt="Salle de bain apres renovation" loading="lazy">
+              <span class="gallery-item__label gallery-item__label--after">Apres</span>
+            </div>
+          </div>
+          <div class="gallery-item__info">
+            <span class="badge" style="background:#F1980D;">Travaux</span>
+            <h3>Salle de bain contemporaine</h3>
+            <p>Remplacement complet avec douche a l'italienne et meuble vasque sur mesure. Cognac.</p>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-category="transition">
+          <div class="gallery-item__compare">
+            <div class="gallery-item__before">
+              <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?w=600&q=80" alt="Salon avant reamenagement" loading="lazy">
+              <span class="gallery-item__label">Avant</span>
+            </div>
+            <div class="gallery-item__after">
+              <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&q=80" alt="Salon apres reamenagement" loading="lazy">
+              <span class="gallery-item__label gallery-item__label--after">Apres</span>
+            </div>
+          </div>
+          <div class="gallery-item__info">
+            <span class="badge" style="background:#C0428A;color:#fff;">Transition</span>
+            <h3>Reamenagement salon apres separation</h3>
+            <p>Creer un espace chaleureux et personnel. Accompagnement avec douceur et methode.</p>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-category="travaux">
+          <div class="gallery-item__compare">
+            <div class="gallery-item__before">
+              <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?w=600&q=80" alt="Sejour avant renovation" loading="lazy">
+              <span class="gallery-item__label">Avant</span>
+            </div>
+            <div class="gallery-item__after">
+              <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80" alt="Sejour apres renovation" loading="lazy">
+              <span class="gallery-item__label gallery-item__label--after">Apres</span>
+            </div>
+          </div>
+          <div class="gallery-item__info">
+            <span class="badge" style="background:#F1980D;">Travaux</span>
+            <h3>Renovation complete maison de ville</h3>
+            <p>Coordination de 6 corps de metier sur 4 mois. Resultat : une maison transformee. Charente.</p>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-category="transition">
+          <div class="gallery-item__compare">
+            <div class="gallery-item__before">
+              <img src="https://images.unsplash.com/photo-1499916078039-922301b0eb9b?w=600&q=80" alt="Chambre avant preparation bebe" loading="lazy">
+              <span class="gallery-item__label">Avant</span>
+            </div>
+            <div class="gallery-item__after">
+              <img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=600&q=80" alt="Chambre bebe amenagee" loading="lazy">
+              <span class="gallery-item__label gallery-item__label--after">Apres</span>
+            </div>
+          </div>
+          <div class="gallery-item__info">
+            <span class="badge" style="background:#C0428A;color:#fff;">Transition</span>
+            <h3>Preparation chambre de bebe</h3>
+            <p>Transformation d'un bureau en chambre de bebe douce et fonctionnelle. Angouleme.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-banner">
+    <div class="cta-banner__bg" style="background-image: url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1600&q=80');"></div>
+    <div class="cta-banner__overlay"></div>
+    <div class="container cta-banner__content reveal">
+      <h2>Votre projet sera le prochain ?</h2>
+      <p>Contactez-nous pour discuter de vos envies et obtenir un devis gratuit.</p>
+      <div class="cta-banner__actions">
+        <a href="contact.html" class="btn btn--cta">Lancer mon projet</a>
+        <a href="tel:0617026769" class="cta-banner__phone">
+          <i data-lucide="phone"></i>
+          06 17 02 67 69
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <img src="img/logotype_secondaire_blanc.png" alt="Stella'Concept" class="footer__logo-img" style="height:40px;">
+          <p class="footer__text">Accompagnement personnalise pour vos projets de travaux et transitions de vie en Charente.</p>
+        </div>
+        <div>
+          <h4 class="footer__title">Navigation</h4>
+          <div class="footer__links">
+            <a href="index.html">Accueil</a>
+            <a href="services-travaux.html">Travaux</a>
+            <a href="services-transition.html">Transition de vie</a>
+            <a href="a-propos.html">A propos</a>
+            <a href="faq.html">FAQ</a>
+            <a href="contact.html">Contact</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__title">Services</h4>
+          <div class="footer__links">
+            <a href="services-travaux.html">Gestion de chantier</a>
+            <a href="services-travaux.html">Suivi de travaux</a>
+            <a href="services-transition.html">Tri & desencombrement</a>
+            <a href="services-transition.html">Accompagnement transition</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__title">Contact</h4>
+          <div class="footer__contact-item">
+            <i data-lucide="phone"></i>
+            <span>06 17 02 67 69</span>
+          </div>
+          <div class="footer__contact-item">
+            <i data-lucide="mail"></i>
+            <span>contact@stellaconcept.fr</span>
+          </div>
+          <div class="footer__contact-item">
+            <i data-lucide="map-pin"></i>
+            <span>Angouleme, Charente (16)</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2025 Stella'Concept. Tous droits reserves.</p>
+        <div class="footer__legal">
+          <a href="mentions-legales.html">Mentions legales</a>
+          <a href="politique-confidentialite.html">Politique de confidentialite</a>
+          <a href="cgu.html">CGU</a>
+          <a href="politique-cookies.html">Politique de cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/animations.js"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>

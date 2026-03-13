@@ -1,0 +1,301 @@
+/* =============================================
+   STELLA CONCEPT - Animations
+   ============================================= */
+
+/* --- Scroll Reveal --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal--left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal--right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal--scale {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.is-visible,
+.reveal--left.is-visible,
+.reveal--right.is-visible,
+.reveal--scale.is-visible {
+  opacity: 1;
+  transform: translate(0) scale(1);
+}
+
+/* Stagger delay pour grilles */
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal-stagger.is-visible > *:nth-child(1) { transition-delay: 0s; opacity: 1; transform: translateY(0); }
+.reveal-stagger.is-visible > *:nth-child(2) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
+.reveal-stagger.is-visible > *:nth-child(3) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
+.reveal-stagger.is-visible > *:nth-child(4) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+.reveal-stagger.is-visible > *:nth-child(5) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
+.reveal-stagger.is-visible > *:nth-child(6) { transition-delay: 0.5s; opacity: 1; transform: translateY(0); }
+
+/* --- Hamburger Animation (3 barres → X) --- */
+.hamburger.active .hamburger__bar:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.active .hamburger__bar:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-10px);
+}
+
+.hamburger.active .hamburger__bar:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* --- Hero parallax --- */
+.parallax-bg {
+  will-change: transform;
+}
+
+/* --- Hover boutons --- */
+.btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.15);
+  transition: width 0.5s ease, height 0.5s ease;
+  transform: translate(-50%, -50%);
+}
+
+.btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* --- Compteurs --- */
+@keyframes countPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.stat__number.animated {
+  animation: countPulse 0.5s ease;
+}
+
+/* --- Fade in hero content --- */
+@keyframes heroFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero__content {
+  animation: heroFadeIn 1s ease 0.3s both;
+}
+
+/* --- Logo hover --- */
+.nav__logo {
+  transition: transform var(--transition);
+}
+
+.nav__logo:hover {
+  transform: scale(1.02);
+}
+
+/* --- Card accent bar animation --- */
+.card--large::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+
+.card--large:hover::before {
+  transform: scaleX(1);
+}
+
+/* --- Lien footer underline --- */
+.footer__links a {
+  position: relative;
+}
+
+.footer__links a::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--color-lime);
+  transition: width var(--transition);
+}
+
+.footer__links a:hover::after {
+  width: 100%;
+}
+
+/* --- Page transition --- */
+@keyframes pageIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+body {
+  animation: pageIn 0.4s ease;
+}
+
+/* --- Icon hover spin --- */
+.card__icon:hover i,
+.value-card__icon:hover i {
+  animation: iconSpin 0.5s ease;
+}
+
+@keyframes iconSpin {
+  0% { transform: rotateY(0); }
+  100% { transform: rotateY(360deg); }
+}
+
+/* --- Gallery item hover shine --- */
+.gallery-item::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+  transition: left 0.6s ease;
+  pointer-events: none;
+}
+
+.gallery-item:hover::after {
+  left: 100%;
+}
+
+/* --- Pricing card glow --- */
+.pricing-card--featured {
+  box-shadow: 0 0 0 1px var(--accent), var(--shadow-md);
+}
+
+.pricing-card--featured:hover {
+  box-shadow: 0 0 25px rgba(204, 213, 55, 0.2), var(--shadow-lg);
+}
+
+/* --- Blog card image zoom --- */
+.blog-card__image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.3), transparent 50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.blog-card:hover .blog-card__image::after {
+  opacity: 1;
+}
+
+/* --- Nav link active dot --- */
+.nav__links a.active::before {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+/* --- Floating animation for WhatsApp --- */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.whatsapp-btn {
+  animation: float 3s ease-in-out infinite;
+}
+
+.whatsapp-btn:hover {
+  animation: none;
+}
+
+/* --- Section divider wave --- */
+.section--primary::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 0;
+  height: 30px;
+  background: var(--color-white);
+  clip-path: ellipse(55% 100% at 50% 0%);
+}
+
+.section--primary {
+  position: relative;
+  padding-top: calc(var(--space-xl) + 20px);
+}
+
+/* --- Focus visible (accessibilite) --- */
+*:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* --- Préférence mouvement réduit --- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal,
+  .reveal--left,
+  .reveal--right,
+  .reveal--scale {
+    opacity: 1;
+    transform: none;
+  }
+
+  .reveal-stagger > * {
+    opacity: 1;
+    transform: none;
+  }
+}

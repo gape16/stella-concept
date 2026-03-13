@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Stella'Concept | Demandez votre appel decouverte</title>
+  <meta name="description" content="Contactez Stella'Concept pour un appel decouverte gratuit. Accompagnement travaux et transition de vie a Angouleme, Charente.">
+  <meta property="og:title" content="Contact - Stella'Concept">
+  <meta property="og:description" content="Contactez-nous pour un premier echange gratuit et sans engagement.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#544957">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <style>:root { --accent: #C0428A; }</style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" aria-label="Navigation principale">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="Stella'Concept - Accueil">
+        <img src="img/logotype_secondaire.svg" alt="Stella'Concept" class="nav__logo-img">
+      </a>
+      <div class="nav__links" role="menubar">
+        <a href="index.html" role="menuitem">Accueil</a>
+        <a href="services-travaux.html" role="menuitem">Accompagnement travaux</a>
+        <a href="services-transition.html" role="menuitem">Transition de vie</a>
+        <a href="a-propos.html" role="menuitem">A propos</a>
+        <a href="faq.html" role="menuitem">FAQ</a>
+        <a href="contact.html" class="active" role="menuitem">Contact</a>
+      </div>
+      <button class="hamburger" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span class="hamburger__bar"></span>
+        <span class="hamburger__bar"></span>
+        <span class="hamburger__bar"></span>
+      </button>
+    </div>
+    <div class="nav__overlay"></div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero hero--compact">
+    <div class="hero__bg" style="background-image: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1600&q=80');" role="img" aria-label="Discussion professionnelle"></div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <h1>Parlons de votre projet</h1>
+      <p>Premier echange gratuit et sans engagement. Reponse garantie sous 24 a 48 heures.</p>
+    </div>
+  </section>
+
+  <!-- Formulaire + infos -->
+  <section class="section">
+    <div class="container">
+      <div class="grid grid--2 reveal">
+        <!-- Formulaire -->
+        <div>
+          <h2 class="mb-md">Envoyez-nous un message</h2>
+          <form class="form" id="contact-form" action="https://formspree.io/f/xpreconfigured" method="POST" novalidate>
+            <div class="form__group">
+              <label class="form__label" for="nom">Nom <span class="required">*</span></label>
+              <input type="text" id="nom" name="nom" class="form__input" required placeholder="Votre nom">
+              <span class="form__error"></span>
+            </div>
+            <div class="form__group">
+              <label class="form__label" for="telephone">Telephone <span class="required">*</span></label>
+              <input type="tel" id="telephone" name="telephone" class="form__input" required placeholder="06 XX XX XX XX">
+              <span class="form__error"></span>
+            </div>
+            <div class="form__group">
+              <label class="form__label" for="email">Email <span class="required">*</span></label>
+              <input type="email" id="email" name="email" class="form__input" required placeholder="votre@email.fr">
+              <span class="form__error"></span>
+            </div>
+            <div class="form__group">
+              <label class="form__label" for="ville">Ville</label>
+              <input type="text" id="ville" name="ville" class="form__input" placeholder="Votre ville">
+              <span class="form__error"></span>
+            </div>
+            <div class="form__group">
+              <label class="form__label" for="message">Message <span class="required">*</span></label>
+              <textarea id="message" name="message" class="form__textarea" required placeholder="Decrivez votre projet ou votre demande..."></textarea>
+              <span class="form__error"></span>
+            </div>
+            <div class="form__group">
+              <label class="form__label" for="horaire">Horaire de rappel souhaite</label>
+              <select id="horaire" name="horaire" class="form__select">
+                <option value="">-- Choisissez un horaire --</option>
+                <option value="matin">Matin (9h-12h)</option>
+                <option value="apres-midi">Apres-midi (14h-18h)</option>
+                <option value="pas-de-preference">Pas de preference</option>
+              </select>
+              <span class="form__error"></span>
+            </div>
+            <button type="submit" class="btn btn--cta">
+              <i data-lucide="send" style="width:18px;height:18px;"></i>
+              Obtenir mon appel decouverte
+            </button>
+          </form>
+          <div class="form__success">
+            <i data-lucide="check-circle" style="width:40px;height:40px;margin:0 auto 1rem;display:block;color:#2e7d32;"></i>
+            <h3 style="color:#2e7d32;margin-bottom:0.5rem;">Message envoye avec succes !</h3>
+            <p>Merci pour votre message. Nous vous repondrons dans les plus brefs delais.</p>
+          </div>
+        </div>
+
+        <!-- Infos contact -->
+        <div>
+          <h2 class="mb-md">Nos coordonnees</h2>
+          <div class="contact-info">
+            <div class="contact-info__item">
+              <div class="contact-info__icon">
+                <i data-lucide="phone"></i>
+              </div>
+              <div>
+                <div class="contact-info__label">Telephone</div>
+                <div class="contact-info__value"><a href="tel:0617026769" style="font-size:1.25rem;font-weight:600;">06 17 02 67 69</a></div>
+              </div>
+            </div>
+            <div class="contact-info__item">
+              <div class="contact-info__icon">
+                <i data-lucide="mail"></i>
+              </div>
+              <div>
+                <div class="contact-info__label">Email</div>
+                <div class="contact-info__value"><a href="mailto:contact@stellaconcept.fr">contact@stellaconcept.fr</a></div>
+              </div>
+            </div>
+            <div class="contact-info__item">
+              <div class="contact-info__icon">
+                <i data-lucide="map-pin"></i>
+              </div>
+              <div>
+                <div class="contact-info__label">Localisation</div>
+                <div class="contact-info__value">Angouleme, Charente (16)</div>
+              </div>
+            </div>
+            <div class="contact-info__item">
+              <div class="contact-info__icon">
+                <i data-lucide="clock"></i>
+              </div>
+              <div>
+                <div class="contact-info__label">Horaires</div>
+                <div class="contact-info__value">Lundi - Vendredi : 9h - 18h</div>
+              </div>
+            </div>
+            <div class="contact-info__item">
+              <div class="contact-info__icon">
+                <i data-lucide="check-circle"></i>
+              </div>
+              <div>
+                <div class="contact-info__value" style="font-weight:600;">Reponse garantie sous 24 a 48 heures.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="map-container" style="margin-top: 2rem;">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d44898.54!2d0.1098!3d45.6486!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47ffb2d9e5f6e0a7%3A0x40d37521e0d0fd0!2sAngoul%C3%AAme!5e0!3m2!1sfr!2sfr!4v1700000000000!5m2!1sfr!2sfr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Localisation Stella'Concept - Angouleme"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__logo">
+            <img src="img/logotype_secondaire_blanc.png" alt="Stella'Concept" class="footer__logo-img" style="height:40px;">
+          </div>
+          <p class="footer__text">Accompagnement personnalise pour vos projets de travaux et transitions de vie en Charente.</p>
+        </div>
+        <div>
+          <h4 class="footer__title">Navigation</h4>
+          <div class="footer__links">
+            <a href="index.html">Accueil</a>
+            <a href="services-travaux.html">Accompagnement travaux</a>
+            <a href="services-transition.html">Transition de vie</a>
+            <a href="a-propos.html">A propos</a>
+            <a href="faq.html">FAQ</a>
+            <a href="contact.html">Contact</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__title">Services</h4>
+          <div class="footer__links">
+            <a href="services-travaux.html">Gestion de chantier</a>
+            <a href="services-travaux.html">Suivi de travaux</a>
+            <a href="services-transition.html">Tri & desencombrement</a>
+            <a href="services-transition.html">Accompagnement transition</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__title">Contact</h4>
+          <div class="footer__contact-item">
+            <i data-lucide="phone"></i>
+            <span>06 17 02 67 69</span>
+          </div>
+          <div class="footer__contact-item">
+            <i data-lucide="mail"></i>
+            <span>contact@stellaconcept.fr</span>
+          </div>
+          <div class="footer__contact-item">
+            <i data-lucide="map-pin"></i>
+            <span>Angouleme, Charente (16)</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2025 Stella'Concept. Tous droits reserves.</p>
+        <div class="footer__legal">
+          <a href="mentions-legales.html">Mentions legales</a>
+          <a href="politique-confidentialite.html">Politique de confidentialite</a>
+          <a href="cgu.html">CGU</a>
+          <a href="politique-cookies.html">Politique de cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/animations.js"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>
