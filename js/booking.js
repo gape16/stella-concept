@@ -85,16 +85,21 @@
   async function fetchSlots(dateStr) {
     const url = getScriptURL();
     if (!url) {
-      // Demo mode — simulate network delay
       await new Promise(r => setTimeout(r, 400));
       return DEMO_SLOTS;
     }
 
-    const res = await fetch(`${url}?action=slots&date=${dateStr}`);
-    if (!res.ok) throw new Error('Impossible de récupérer les créneaux.');
-    const data = await res.json();
+    // Google Apps Script redirects (302) — fetch follows by default
+    // but may fail due to CORS on the redirect. We use no-cors as fallback.
+    const res = await fetch(`${url}?action=slots&date=${dateStr}`, {
+      method: 'GET',
+      redirect: 'follow'
+    });
+    const text = await res.text();
+    const data = JSON.parse(text);
     return data.slots || [];
   }
+
 
   /**
    * Submit a booking to the backend.
@@ -109,11 +114,12 @@
 
     const res = await fetch(url, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      redirect: 'follow',
+      headers: { 'Content-Type': 'text/plain' },
       body: JSON.stringify({ action: 'book', ...payload })
     });
-    if (!res.ok) throw new Error('Erreur lors de la réservation.');
-    return res.json();
+    const text = await res.text();
+    return JSON.parse(text);
   }
 
   /* ------------------------------------------
