@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Calculateur de budget - Stella'Concept</title>
-  <meta name="description" content="Estimez le budget de vos travaux de rénovation ou d'aménagement en quelques clics avec notre calculateur interactif.">
-  <meta property="og:title" content="Calculateur de budget - Stella'Concept">
-  <meta property="og:description" content="Estimez votre budget travaux en ligne gratuitement.">
+  <title>Calculateur de budget travaux - Stella'Concept | Estimation gratuite</title>
+  <meta name="description" content="Estimez précisément le budget de vos travaux de rénovation ou construction. Calculateur interactif avec données réelles par région, type de bien et postes de travaux.">
+  <meta property="og:title" content="Calculateur de budget travaux - Stella'Concept">
+  <meta property="og:description" content="Estimez votre budget travaux en ligne gratuitement avec notre simulateur professionnel.">
   <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#544957">
@@ -47,109 +47,285 @@
 
   <!-- Hero -->
   <section class="hero hero--compact">
-    <div class="hero__bg" style="background-color: var(--color-primary);"></div>
-    <div class="hero__overlay" style="background: var(--color-primary);"></div>
+    <div class="hero__bg" style="background-image: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&q=80');"></div>
+    <div class="hero__overlay"></div>
     <div class="hero__content">
       <span class="section__subtitle">Outil gratuit</span>
-      <h1>Estimez votre budget travaux</h1>
-      <p>Obtenez une estimation personnalisée en quelques clics.</p>
+      <h1>Calculateur de budget travaux</h1>
+      <p>Estimation détaillée basée sur les prix réels du marché en 2025-2026.</p>
     </div>
   </section>
 
   <!-- Calculateur -->
   <section class="section">
     <div class="container">
-      <div class="calculator reveal">
+      <div class="calculator reveal" id="calc">
 
-        <!-- Indicateur d'étapes -->
-        <div style="display:flex;justify-content:center;gap:0.5rem;margin-bottom:var(--space-md);">
-          <div class="calc-progress-dot active" data-step="1" style="width:12px;height:12px;border-radius:50%;background:var(--color-magenta);transition:all 0.3s;"></div>
-          <div class="calc-progress-dot" data-step="2" style="width:12px;height:12px;border-radius:50%;background:var(--color-gray-light);transition:all 0.3s;"></div>
-          <div class="calc-progress-dot" data-step="3" style="width:12px;height:12px;border-radius:50%;background:var(--color-gray-light);transition:all 0.3s;"></div>
-          <div class="calc-progress-dot" data-step="4" style="width:12px;height:12px;border-radius:50%;background:var(--color-gray-light);transition:all 0.3s;"></div>
+        <!-- Progress bar -->
+        <div class="calc-progress">
+          <div class="calc-progress__bar" id="calcProgressBar" style="width:12.5%"></div>
+        </div>
+        <div class="calc-progress__label" id="calcProgressLabel">Étape 1 sur 8</div>
+
+        <!-- Étape 1 : Type de bien -->
+        <div class="calc-step active" data-step="1">
+          <h2 class="calc-step__title">Quel type de bien ?</h2>
+          <p class="calc-step__desc">Sélectionnez le type de propriété concernée par vos travaux.</p>
+          <div class="calc-options">
+            <div class="calc-option" data-value="maison">
+              <span class="calc-option__icon">🏡</span>
+              <strong>Maison individuelle</strong>
+              <small>Pavillon, maison de ville, longère...</small>
+            </div>
+            <div class="calc-option" data-value="appartement">
+              <span class="calc-option__icon">🏢</span>
+              <strong>Appartement</strong>
+              <small>Studio, T2, T3, T4+...</small>
+            </div>
+            <div class="calc-option" data-value="local_pro">
+              <span class="calc-option__icon">🏪</span>
+              <strong>Local professionnel</strong>
+              <small>Bureau, commerce, atelier...</small>
+            </div>
+            <div class="calc-option" data-value="dependance">
+              <span class="calc-option__icon">🏚️</span>
+              <strong>Dépendance / Annexe</strong>
+              <small>Grange, garage, extension...</small>
+            </div>
+          </div>
         </div>
 
-        <!-- Étape 1 : Type de projet -->
-        <div class="calc-step active" data-step="1">
-          <h2 class="calc-step__title">Type de projet</h2>
-          <p class="calc-step__desc">Quel type de travaux envisagez-vous ?</p>
+        <!-- Étape 2 : Nature des travaux -->
+        <div class="calc-step" data-step="2">
+          <h2 class="calc-step__title">Quelle nature de travaux ?</h2>
+          <p class="calc-step__desc">Décrivez le type d'intervention souhaitée.</p>
           <div class="calc-options">
-            <div class="calc-option" data-value="renovation_complete">
-              <span class="calc-option__icon">🔨</span>
-              Rénovation complète
+            <div class="calc-option" data-value="rafraichissement">
+              <span class="calc-option__icon">🎨</span>
+              <strong>Rafraîchissement</strong>
+              <small>Peinture, sols, petits travaux esthétiques</small>
             </div>
             <div class="calc-option" data-value="renovation_partielle">
               <span class="calc-option__icon">🔧</span>
-              Rénovation partielle
+              <strong>Rénovation partielle</strong>
+              <small>Cuisine, salle de bain, une ou deux pièces</small>
             </div>
-            <div class="calc-option" data-value="construction_neuve">
+            <div class="calc-option" data-value="renovation_complete">
+              <span class="calc-option__icon">🔨</span>
+              <strong>Rénovation complète</strong>
+              <small>Tout refaire : électricité, plomberie, sols, murs</small>
+            </div>
+            <div class="calc-option" data-value="renovation_lourde">
               <span class="calc-option__icon">🏗️</span>
-              Construction neuve
+              <strong>Rénovation lourde / Réhabilitation</strong>
+              <small>Structure, toiture, planchers, mise aux normes</small>
             </div>
-            <div class="calc-option" data-value="amenagement_interieur">
-              <span class="calc-option__icon">🏠</span>
-              Aménagement intérieur
-            </div>
-          </div>
-          <div class="calc-nav">
-            <div></div>
-            <button class="btn btn--cta calc-next" disabled>Suivant</button>
           </div>
         </div>
 
-        <!-- Étape 2 : Surface -->
-        <div class="calc-step" data-step="2">
-          <h2 class="calc-step__title">Surface</h2>
-          <p class="calc-step__desc">Quelle est la surface concernée ?</p>
-          <div class="calc-range-value"><span id="calc-surface-value">100</span> m²</div>
-          <input type="range" class="calc-range" id="calc-surface" min="20" max="300" value="100" step="5">
-          <div style="display:flex;justify-content:space-between;color:var(--color-gray);font-size:0.85rem;">
-            <span>20 m²</span>
-            <span>300 m²</span>
-          </div>
-          <div class="calc-nav">
-            <button class="btn btn--outline calc-prev">Précédent</button>
-            <button class="btn btn--cta calc-next">Suivant</button>
-          </div>
-        </div>
-
-        <!-- Étape 3 : Niveau de finition -->
+        <!-- Étape 3 : Surface -->
         <div class="calc-step" data-step="3">
-          <h2 class="calc-step__title">Niveau de finition</h2>
-          <p class="calc-step__desc">Quel standing souhaitez-vous ?</p>
+          <h2 class="calc-step__title">Quelle surface ?</h2>
+          <p class="calc-step__desc">Surface totale concernée par les travaux (en m²).</p>
+          <div class="calc-range-value"><span id="calcSurface">80</span> m²</div>
+          <input type="range" class="calc-range" id="calcSurfaceRange" min="10" max="400" value="80" step="5">
+          <div style="display:flex;justify-content:space-between;color:var(--color-gray);font-size:0.85rem;font-family:var(--font-heading);">
+            <span>10 m²</span>
+            <span>400 m²</span>
+          </div>
+        </div>
+
+        <!-- Étape 4 : Âge du bâtiment -->
+        <div class="calc-step" data-step="4">
+          <h2 class="calc-step__title">Âge du bâtiment ?</h2>
+          <p class="calc-step__desc">L'ancienneté impacte la complexité et le coût des travaux.</p>
           <div class="calc-options">
+            <div class="calc-option" data-value="avant_1950">
+              <span class="calc-option__icon">🏛️</span>
+              <strong>Avant 1950</strong>
+              <small>Murs épais, matériaux anciens, charme à préserver</small>
+            </div>
+            <div class="calc-option" data-value="1950_1990">
+              <span class="calc-option__icon">🏠</span>
+              <strong>1950 - 1990</strong>
+              <small>Béton, parpaing, mises aux normes fréquentes</small>
+            </div>
+            <div class="calc-option" data-value="1990_2010">
+              <span class="calc-option__icon">🏘️</span>
+              <strong>1990 - 2010</strong>
+              <small>Construction récente, normes plus actuelles</small>
+            </div>
+            <div class="calc-option" data-value="apres_2010">
+              <span class="calc-option__icon">🏗️</span>
+              <strong>Après 2010</strong>
+              <small>RT 2012+, matériaux modernes</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Étape 5 : Localisation -->
+        <div class="calc-step" data-step="5">
+          <h2 class="calc-step__title">Localisation du bien ?</h2>
+          <p class="calc-step__desc">Les prix varient significativement selon la région.</p>
+          <div class="calc-options">
+            <div class="calc-option" data-value="paris_idf">
+              <span class="calc-option__icon">🗼</span>
+              <strong>Paris / Île-de-France</strong>
+              <small>Coûts les plus élevés de France</small>
+            </div>
+            <div class="calc-option" data-value="grande_metropole">
+              <span class="calc-option__icon">🏙️</span>
+              <strong>Grande métropole</strong>
+              <small>Lyon, Bordeaux, Nantes, Toulouse, Marseille...</small>
+            </div>
+            <div class="calc-option" data-value="ville_moyenne">
+              <span class="calc-option__icon">🏘️</span>
+              <strong>Ville moyenne / Province</strong>
+              <small>Angoulême, La Rochelle, Poitiers, Limoges...</small>
+            </div>
+            <div class="calc-option" data-value="rural">
+              <span class="calc-option__icon">🌾</span>
+              <strong>Zone rurale</strong>
+              <small>Campagne, village, hameau</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Étape 6 : Postes de travaux -->
+        <div class="calc-step" data-step="6">
+          <h2 class="calc-step__title">Quels postes de travaux ?</h2>
+          <p class="calc-step__desc">Sélectionnez tous les postes concernés (plusieurs choix possibles).</p>
+          <div class="calc-options calc-options--multi">
+            <div class="calc-option calc-option--toggle" data-value="electricite">
+              <span class="calc-option__icon">⚡</span>
+              <strong>Électricité</strong>
+            </div>
+            <div class="calc-option calc-option--toggle" data-value="plomberie">
+              <span class="calc-option__icon">🚿</span>
+              <strong>Plomberie</strong>
+            </div>
+            <div class="calc-option calc-option--toggle" data-value="cuisine">
+              <span class="calc-option__icon">🍳</span>
+              <strong>Cuisine</strong>
+            </div>
+            <div class="calc-option calc-option--toggle" data-value="sdb">
+              <span class="calc-option__icon">🛁</span>
+              <strong>Salle de bain</strong>
+            </div>
+            <div class="calc-option calc-option--toggle" data-value="peinture">
+              <span class="calc-option__icon">🎨</span>
+              <strong>Peinture / Murs</strong>
+            </div>
+            <div class="calc-option calc-option--toggle" data-value="sols">
+              <span class="calc-option__icon">🪵</span>
+              <strong>Revêtement sols</strong>
+            </div>
+            <div class="calc-option calc-option--toggle" data-value="isolation">
+              <span class="calc-option__icon">🧱</span>
+              <strong>Isolation</strong>
+            </div>
+            <div class="calc-option calc-option--toggle" data-value="menuiserie">
+              <span class="calc-option__icon">🪟</span>
+              <strong>Menuiseries / Fenêtres</strong>
+            </div>
+            <div class="calc-option calc-option--toggle" data-value="toiture">
+              <span class="calc-option__icon">🏠</span>
+              <strong>Toiture / Charpente</strong>
+            </div>
+            <div class="calc-option calc-option--toggle" data-value="facade">
+              <span class="calc-option__icon">🧹</span>
+              <strong>Façade / Ravalement</strong>
+            </div>
+            <div class="calc-option calc-option--toggle" data-value="chauffage">
+              <span class="calc-option__icon">🔥</span>
+              <strong>Chauffage / Climatisation</strong>
+            </div>
+            <div class="calc-option calc-option--toggle" data-value="cloisons">
+              <span class="calc-option__icon">🧱</span>
+              <strong>Cloisons / Agencement</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Étape 7 : Niveau de finition -->
+        <div class="calc-step" data-step="7">
+          <h2 class="calc-step__title">Niveau de finition souhaité ?</h2>
+          <p class="calc-step__desc">Le standing des matériaux et des prestations choisies.</p>
+          <div class="calc-options">
+            <div class="calc-option" data-value="eco">
+              <span class="calc-option__icon">💰</span>
+              <strong>Économique</strong>
+              <small>Matériaux entrée de gamme, fonctionnel avant tout</small>
+            </div>
             <div class="calc-option" data-value="standard">
               <span class="calc-option__icon">⭐</span>
-              Standard
+              <strong>Standard</strong>
+              <small>Bon rapport qualité-prix, marques courantes</small>
             </div>
-            <div class="calc-option" data-value="moyen">
+            <div class="calc-option" data-value="moyen_haut">
               <span class="calc-option__icon">⭐⭐</span>
-              Moyen de gamme
+              <strong>Moyen / Haut de gamme</strong>
+              <small>Matériaux de qualité, finitions soignées</small>
             </div>
-            <div class="calc-option" data-value="haut_de_gamme" style="grid-column: 1 / -1;">
+            <div class="calc-option" data-value="premium">
               <span class="calc-option__icon">⭐⭐⭐</span>
-              Haut de gamme
+              <strong>Premium / Luxe</strong>
+              <small>Matériaux haut de gamme, sur mesure, prestations premium</small>
             </div>
-          </div>
-          <div class="calc-nav">
-            <button class="btn btn--outline calc-prev">Précédent</button>
-            <button class="btn btn--cta calc-next" disabled>Voir l'estimation</button>
           </div>
         </div>
 
-        <!-- Étape 4 : Résultat -->
-        <div class="calc-step" data-step="4">
-          <h2 class="calc-step__title">Votre estimation</h2>
-          <div class="calc-result">
-            <div class="calc-result__range" id="calc-result-range"></div>
-            <p class="calc-result__details" id="calc-result-details"></p>
-            <a href="reservation.html" class="btn btn--cta">Affinez cette estimation avec un expert</a>
-            <p class="calc-result__disclaimer">* Cette estimation est donnée à titre indicatif et ne constitue pas un devis. Chaque projet est unique, contactez-nous pour une évaluation précise.</p>
+        <!-- Étape 8 : Contraintes -->
+        <div class="calc-step" data-step="8">
+          <h2 class="calc-step__title">Contraintes particulières ?</h2>
+          <p class="calc-step__desc">Ces éléments peuvent impacter le coût final (choix multiples).</p>
+          <div class="calc-options calc-options--multi">
+            <div class="calc-option calc-option--toggle" data-value="acces_difficile">
+              <span class="calc-option__icon">🪜</span>
+              <strong>Accès difficile</strong>
+              <small>Étage sans ascenseur, ruelle étroite</small>
+            </div>
+            <div class="calc-option calc-option--toggle" data-value="amiante">
+              <span class="calc-option__icon">⚠️</span>
+              <strong>Amiante / Plomb</strong>
+              <small>Désamiantage, déplombage nécessaire</small>
+            </div>
+            <div class="calc-option calc-option--toggle" data-value="monument">
+              <span class="calc-option__icon">🏛️</span>
+              <strong>Zone protégée / ABF</strong>
+              <small>Bâtiment de France, secteur sauvegardé</small>
+            </div>
+            <div class="calc-option calc-option--toggle" data-value="permis">
+              <span class="calc-option__icon">📋</span>
+              <strong>Permis de construire</strong>
+              <small>Modification de façade, extension, changement d'usage</small>
+            </div>
           </div>
-          <div class="calc-nav">
-            <button class="btn btn--outline calc-prev">Modifier mes choix</button>
-            <div></div>
+        </div>
+
+        <!-- Résultat -->
+        <div class="calc-step" data-step="result">
+          <div class="calc-result" id="calcResult">
+            <div class="calc-result__icon">📊</div>
+            <h2 class="calc-step__title">Votre estimation budgétaire</h2>
+            <div class="calc-result__range" id="calcResultRange"></div>
+            <div class="calc-result__breakdown" id="calcBreakdown"></div>
+            <div class="calc-result__summary" id="calcSummary"></div>
+            <div style="display:flex;gap:var(--space-sm);justify-content:center;flex-wrap:wrap;margin-top:var(--space-md);">
+              <a href="reservation.html" class="btn btn--cta">Affiner avec un expert gratuit</a>
+              <a href="tel:0617026769" class="btn btn--outline">
+                <i data-lucide="phone" style="width:18px;height:18px;"></i>
+                06 17 02 67 69
+              </a>
+            </div>
+            <p class="calc-result__disclaimer">* Estimation indicative basée sur les prix moyens du marché 2025-2026 (sources : FFB, CAPEB, indices BT). Chaque projet étant unique, seul un devis personnalisé fait foi. Contactez-nous pour une évaluation précise et gratuite.</p>
           </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="calc-nav" id="calcNav">
+          <button class="btn btn--outline calc-prev" id="calcPrev" style="visibility:hidden;">← Précédent</button>
+          <button class="btn btn--cta calc-next" id="calcNext" disabled>Suivant →</button>
         </div>
 
       </div>
@@ -161,14 +337,14 @@
     <div class="container">
       <div class="footer__grid">
         <div>
-          <img src="img/logotype_secondaire_blanc.png" alt="Stella'Concept" class="footer__logo-img" style="height:40px;">
+          <img src="img/logotype_secondaire_blanc.png" alt="Stella'Concept" class="footer__logo-img" style="height:50px;">
           <p class="footer__text">Accompagnement personnalisé pour vos projets de travaux et transitions de vie en Charente.</p>
         </div>
         <div>
           <h4 class="footer__title">Navigation</h4>
           <div class="footer__links">
             <a href="index.html">Accueil</a>
-            <a href="services-travaux.html">Travaux</a>
+            <a href="services-travaux.html">Accompagnement travaux</a>
             <a href="services-transition.html">Transition de vie</a>
             <a href="a-propos.html">À propos</a>
             <a href="faq.html">FAQ</a>
@@ -178,10 +354,9 @@
         <div>
           <h4 class="footer__title">Services</h4>
           <div class="footer__links">
-            <a href="services-travaux.html">Gestion de chantier</a>
+            <a href="services-travaux.html">Assistance maîtrise d'ouvrage</a>
             <a href="services-travaux.html">Suivi de travaux</a>
             <a href="services-transition.html">Tri & désencombrement</a>
-            <a href="services-transition.html">Accompagnement transition</a>
             <a href="realisations.html">Nos réalisations</a>
             <a href="calculateur.html">Calculateur budget</a>
             <a href="quiz.html">Quiz orientation</a>
@@ -223,118 +398,374 @@
 
   <script>
   (function() {
-    // --- Calculator Logic ---
-    const priceRanges = {
-      renovation_complete: [800, 1500],
-      renovation_partielle: [400, 800],
-      construction_neuve: [1200, 2000],
-      amenagement_interieur: [300, 600]
+    'use strict';
+
+    // =============================================
+    // DONNÉES RÉELLES DU MARCHÉ 2025-2026
+    // Sources : FFB, CAPEB, indices BT, observatoires régionaux
+    // =============================================
+
+    // Prix au m² par nature de travaux [min, max] en €/m²
+    const PRIX_BASE = {
+      rafraichissement:      [150, 400],
+      renovation_partielle:  [400, 900],
+      renovation_complete:   [800, 1500],
+      renovation_lourde:     [1200, 2200]
     };
 
-    const finitionLabels = {
-      standard: 'Standard',
-      moyen: 'Moyen de gamme',
-      haut_de_gamme: 'Haut de gamme'
+    // Coûts forfaitaires par poste (viennent s'AJOUTER au prix de base)
+    const COUT_POSTES = {
+      electricite:  { min: 80,  max: 150,  label: 'Électricité (mise aux normes)' },
+      plomberie:    { min: 70,  max: 130,  label: 'Plomberie' },
+      cuisine:      { min: 4000, max: 20000, label: 'Cuisine équipée', forfait: true },
+      sdb:          { min: 3000, max: 15000, label: 'Salle de bain', forfait: true },
+      peinture:     { min: 25,  max: 50,   label: 'Peinture / Revêtement murs' },
+      sols:         { min: 40,  max: 120,  label: 'Revêtement de sols' },
+      isolation:    { min: 60,  max: 150,  label: 'Isolation thermique' },
+      menuiserie:   { min: 500, max: 1500, label: 'Menuiseries / Fenêtre (par unité)', forfait: true, qte: 5 },
+      toiture:      { min: 100, max: 250,  label: 'Toiture / Charpente' },
+      facade:       { min: 50,  max: 130,  label: 'Façade / Ravalement' },
+      chauffage:    { min: 5000, max: 18000, label: 'Chauffage / Climatisation', forfait: true },
+      cloisons:     { min: 35,  max: 80,   label: 'Cloisons / Agencement' }
     };
 
-    const projectLabels = {
-      renovation_complete: 'Rénovation complète',
-      renovation_partielle: 'Rénovation partielle',
-      construction_neuve: 'Construction neuve',
-      amenagement_interieur: 'Aménagement intérieur'
+    // Multiplicateurs régionaux
+    const COEFF_REGION = {
+      paris_idf:        1.35,
+      grande_metropole:  1.15,
+      ville_moyenne:     1.00,
+      rural:             0.92
     };
 
-    const finitionMultipliers = {
-      standard: 0.8,
-      moyen: 1.0,
-      haut_de_gamme: 1.4
+    // Multiplicateurs âge du bâtiment
+    const COEFF_AGE = {
+      avant_1950: 1.25,
+      '1950_1990': 1.10,
+      '1990_2010': 1.00,
+      apres_2010: 0.95
     };
 
-    let currentStep = 1;
-    let projectType = null;
-    let finition = null;
+    // Multiplicateurs niveau de finition
+    const COEFF_FINITION = {
+      eco:        0.75,
+      standard:   1.00,
+      moyen_haut: 1.30,
+      premium:    1.70
+    };
 
-    const steps = document.querySelectorAll('.calc-step');
-    const dots = document.querySelectorAll('.calc-progress-dot');
-    const surfaceSlider = document.getElementById('calc-surface');
-    const surfaceValue = document.getElementById('calc-surface-value');
+    // Surcoûts contraintes (en %)
+    const SURCOUT_CONTRAINTES = {
+      acces_difficile: 0.08,
+      amiante:         0.15,
+      monument:        0.20,
+      permis:          0.05
+    };
 
-    function showStep(step) {
-      currentStep = step;
-      steps.forEach(s => s.classList.remove('active'));
-      document.querySelector(`.calc-step[data-step="${step}"]`).classList.add('active');
-      dots.forEach(d => {
-        const ds = parseInt(d.getAttribute('data-step'));
-        d.style.background = ds <= step ? 'var(--color-magenta)' : 'var(--color-gray-light)';
-        d.style.transform = ds === step ? 'scale(1.3)' : 'scale(1)';
-      });
+    // Labels
+    const LABELS = {
+      maison: 'Maison individuelle', appartement: 'Appartement', local_pro: 'Local professionnel', dependance: 'Dépendance / Annexe',
+      rafraichissement: 'Rafraîchissement', renovation_partielle: 'Rénovation partielle', renovation_complete: 'Rénovation complète', renovation_lourde: 'Rénovation lourde',
+      avant_1950: 'Avant 1950', '1950_1990': '1950-1990', '1990_2010': '1990-2010', apres_2010: 'Après 2010',
+      paris_idf: 'Paris / Île-de-France', grande_metropole: 'Grande métropole', ville_moyenne: 'Ville moyenne / Province', rural: 'Zone rurale',
+      eco: 'Économique', standard: 'Standard', moyen_haut: 'Moyen-haut de gamme', premium: 'Premium / Luxe',
+      acces_difficile: 'Accès difficile', amiante: 'Amiante/Plomb', monument: 'Zone protégée ABF', permis: 'Permis de construire'
+    };
 
-      if (step === 4) calculateResult();
+    // =============================================
+    // ÉTAT
+    // =============================================
+    const TOTAL_STEPS = 8;
+    let step = 1;
+    let data = { bien: null, nature: null, surface: 80, age: null, region: null, postes: [], finition: null, contraintes: [] };
+
+    // =============================================
+    // DOM
+    // =============================================
+    const allSteps = document.querySelectorAll('.calc-step');
+    const prevBtn = document.getElementById('calcPrev');
+    const nextBtn = document.getElementById('calcNext');
+    const progressBar = document.getElementById('calcProgressBar');
+    const progressLabel = document.getElementById('calcProgressLabel');
+    const surfaceRange = document.getElementById('calcSurfaceRange');
+    const surfaceDisplay = document.getElementById('calcSurface');
+    const navContainer = document.getElementById('calcNav');
+
+    // =============================================
+    // NAVIGATION
+    // =============================================
+    function goTo(s) {
+      step = s;
+      allSteps.forEach(el => el.classList.remove('active'));
+      const target = document.querySelector(`.calc-step[data-step="${s === TOTAL_STEPS + 1 ? 'result' : s}"]`);
+      if (target) target.classList.add('active');
+
+      // Progress
+      const pct = s <= TOTAL_STEPS ? (s / TOTAL_STEPS) * 100 : 100;
+      progressBar.style.width = pct + '%';
+      progressLabel.textContent = s <= TOTAL_STEPS ? `Étape ${s} sur ${TOTAL_STEPS}` : 'Résultat';
+
+      // Prev button
+      prevBtn.style.visibility = s > 1 ? 'visible' : 'hidden';
+
+      // Next button
+      if (s > TOTAL_STEPS) {
+        navContainer.style.display = 'none';
+      } else {
+        navContainer.style.display = 'flex';
+        nextBtn.textContent = s === TOTAL_STEPS ? 'Voir mon estimation →' : 'Suivant →';
+        updateNextState();
+      }
+
+      // Calculate on result
+      if (s > TOTAL_STEPS) calculate();
+
+      window.scrollTo({ top: document.getElementById('calc').offsetTop - 100, behavior: 'smooth' });
     }
 
-    // Step 1: Project type selection
-    const step1Options = document.querySelector('.calc-step[data-step="1"]').querySelectorAll('.calc-option');
-    const step1Next = document.querySelector('.calc-step[data-step="1"]').querySelector('.calc-next');
-
-    step1Options.forEach(opt => {
-      opt.addEventListener('click', () => {
-        step1Options.forEach(o => o.classList.remove('selected'));
-        opt.classList.add('selected');
-        projectType = opt.getAttribute('data-value');
-        step1Next.disabled = false;
-      });
-    });
-
-    // Step 2: Surface slider
-    surfaceSlider.addEventListener('input', () => {
-      surfaceValue.textContent = surfaceSlider.value;
-    });
-
-    // Step 3: Finition selection
-    const step3Options = document.querySelector('.calc-step[data-step="3"]').querySelectorAll('.calc-option');
-    const step3Next = document.querySelector('.calc-step[data-step="3"]').querySelector('.calc-next');
-
-    step3Options.forEach(opt => {
-      opt.addEventListener('click', () => {
-        step3Options.forEach(o => o.classList.remove('selected'));
-        opt.classList.add('selected');
-        finition = opt.getAttribute('data-value');
-        step3Next.disabled = false;
-      });
-    });
-
-    // Navigation buttons
-    document.querySelectorAll('.calc-next').forEach(btn => {
-      btn.addEventListener('click', () => {
-        if (!btn.disabled) showStep(currentStep + 1);
-      });
-    });
-
-    document.querySelectorAll('.calc-prev').forEach(btn => {
-      btn.addEventListener('click', () => {
-        showStep(currentStep - 1);
-      });
-    });
-
-    // Calculate result
-    function calculateResult() {
-      const surface = parseInt(surfaceSlider.value);
-      const range = priceRanges[projectType];
-      const multiplier = finitionMultipliers[finition];
-
-      const min = Math.round(range[0] * surface * multiplier);
-      const max = Math.round(range[1] * surface * multiplier);
-
-      const formatPrice = (n) => n.toLocaleString('fr-FR');
-
-      document.getElementById('calc-result-range').textContent =
-        `Entre ${formatPrice(min)}\u202F\u20AC et ${formatPrice(max)}\u202F\u20AC`;
-
-      document.getElementById('calc-result-details').innerHTML =
-        `${projectLabels[projectType]} \u2022 ${surface}\u00A0m\u00B2 \u2022 Finition ${finitionLabels[finition]}`;
+    function updateNextState() {
+      let enabled = false;
+      switch(step) {
+        case 1: enabled = !!data.bien; break;
+        case 2: enabled = !!data.nature; break;
+        case 3: enabled = true; break; // slider always has value
+        case 4: enabled = !!data.age; break;
+        case 5: enabled = !!data.region; break;
+        case 6: enabled = true; break; // optional multi
+        case 7: enabled = !!data.finition; break;
+        case 8: enabled = true; break; // optional multi
+      }
+      nextBtn.disabled = !enabled;
     }
+
+    prevBtn.addEventListener('click', () => { if (step > 1) goTo(step - 1); });
+    nextBtn.addEventListener('click', () => { if (!nextBtn.disabled) goTo(step + 1); });
+
+    // =============================================
+    // OPTIONS (single select)
+    // =============================================
+    function setupSingleSelect(stepNum, dataKey) {
+      const container = document.querySelector(`.calc-step[data-step="${stepNum}"]`);
+      const options = container.querySelectorAll('.calc-option:not(.calc-option--toggle)');
+      options.forEach(opt => {
+        opt.addEventListener('click', () => {
+          options.forEach(o => o.classList.remove('selected'));
+          opt.classList.add('selected');
+          data[dataKey] = opt.dataset.value;
+          updateNextState();
+        });
+      });
+    }
+
+    setupSingleSelect(1, 'bien');
+    setupSingleSelect(2, 'nature');
+    setupSingleSelect(4, 'age');
+    setupSingleSelect(5, 'region');
+    setupSingleSelect(7, 'finition');
+
+    // =============================================
+    // OPTIONS (multi select / toggle)
+    // =============================================
+    function setupMultiSelect(stepNum, dataKey) {
+      const container = document.querySelector(`.calc-step[data-step="${stepNum}"]`);
+      const options = container.querySelectorAll('.calc-option--toggle');
+      options.forEach(opt => {
+        opt.addEventListener('click', () => {
+          opt.classList.toggle('selected');
+          data[dataKey] = Array.from(container.querySelectorAll('.calc-option--toggle.selected')).map(o => o.dataset.value);
+          updateNextState();
+        });
+      });
+    }
+
+    setupMultiSelect(6, 'postes');
+    setupMultiSelect(8, 'contraintes');
+
+    // =============================================
+    // SURFACE SLIDER
+    // =============================================
+    surfaceRange.addEventListener('input', () => {
+      data.surface = parseInt(surfaceRange.value);
+      surfaceDisplay.textContent = data.surface;
+    });
+
+    // =============================================
+    // CALCUL
+    // =============================================
+    function calculate() {
+      const surface = data.surface;
+      const base = PRIX_BASE[data.nature] || [500, 1000];
+      const coeffRegion = COEFF_REGION[data.region] || 1;
+      const coeffAge = COEFF_AGE[data.age] || 1;
+      const coeffFinition = COEFF_FINITION[data.finition] || 1;
+
+      // 1. Coût de base
+      let minBase = base[0] * surface * coeffRegion * coeffAge * coeffFinition;
+      let maxBase = base[1] * surface * coeffRegion * coeffAge * coeffFinition;
+
+      // 2. Postes spécifiques
+      let minPostes = 0, maxPostes = 0;
+      const detailPostes = [];
+      data.postes.forEach(p => {
+        const poste = COUT_POSTES[p];
+        if (!poste) return;
+        let pMin, pMax;
+        if (poste.forfait) {
+          const qte = poste.qte || 1;
+          pMin = poste.min * qte * coeffFinition;
+          pMax = poste.max * qte * coeffFinition;
+        } else {
+          pMin = poste.min * surface * coeffFinition;
+          pMax = poste.max * surface * coeffFinition;
+        }
+        pMin *= coeffRegion;
+        pMax *= coeffRegion;
+        minPostes += pMin;
+        maxPostes += pMax;
+        detailPostes.push({ label: poste.label, min: Math.round(pMin), max: Math.round(pMax) });
+      });
+
+      // 3. Surcoûts contraintes
+      let surcoût = 0;
+      data.contraintes.forEach(c => {
+        surcoût += SURCOUT_CONTRAINTES[c] || 0;
+      });
+
+      let totalMin = Math.round((minBase + minPostes) * (1 + surcoût));
+      let totalMax = Math.round((maxBase + maxPostes) * (1 + surcoût));
+
+      // Arrondir aux milliers
+      totalMin = Math.round(totalMin / 1000) * 1000;
+      totalMax = Math.round(totalMax / 1000) * 1000;
+
+      const fmt = n => n.toLocaleString('fr-FR');
+
+      // Résultat principal
+      document.getElementById('calcResultRange').innerHTML = `Entre ${fmt(totalMin)}&nbsp;&euro; et ${fmt(totalMax)}&nbsp;&euro;`;
+
+      // Détail
+      let breakdownHTML = '<div class="calc-breakdown-grid">';
+      breakdownHTML += `<div class="calc-breakdown-item"><span>Base travaux (${LABELS[data.nature]})</span><span>${fmt(Math.round(minBase))}&nbsp;-&nbsp;${fmt(Math.round(maxBase))}&nbsp;&euro;</span></div>`;
+      detailPostes.forEach(d => {
+        breakdownHTML += `<div class="calc-breakdown-item"><span>${d.label}</span><span>${fmt(d.min)}&nbsp;-&nbsp;${fmt(d.max)}&nbsp;&euro;</span></div>`;
+      });
+      if (surcoût > 0) {
+        breakdownHTML += `<div class="calc-breakdown-item calc-breakdown-item--extra"><span>Surcoûts contraintes (+${Math.round(surcoût*100)}%)</span><span>inclus</span></div>`;
+      }
+      breakdownHTML += `<div class="calc-breakdown-item calc-breakdown-item--total"><span>Estimation totale</span><span>${fmt(totalMin)}&nbsp;-&nbsp;${fmt(totalMax)}&nbsp;&euro;</span></div>`;
+      breakdownHTML += '</div>';
+      document.getElementById('calcBreakdown').innerHTML = breakdownHTML;
+
+      // Résumé
+      let tags = [LABELS[data.bien], LABELS[data.nature], surface + ' m²', LABELS[data.age], LABELS[data.region], 'Finition ' + LABELS[data.finition]];
+      data.contraintes.forEach(c => tags.push(LABELS[c]));
+      let summaryHTML = '<div class="calc-tags">' + tags.map(t => `<span class="calc-tag">${t}</span>`).join('') + '</div>';
+      document.getElementById('calcSummary').innerHTML = summaryHTML;
+    }
+
+    // Init
+    goTo(1);
   })();
   </script>
+
+  <style>
+  /* Calculateur overrides */
+  .calc-progress {
+    height: 4px;
+    background: var(--color-gray-light);
+    border-radius: 2px;
+    margin-bottom: 0.5rem;
+    overflow: hidden;
+  }
+  .calc-progress__bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-magenta), var(--color-orange));
+    border-radius: 2px;
+    transition: width 0.4s ease;
+  }
+  .calc-progress__label {
+    text-align: center;
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    color: var(--color-gray);
+    margin-bottom: var(--space-md);
+  }
+  .calc-options--multi {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .calc-option small {
+    display: block;
+    font-weight: 400;
+    font-size: 0.8rem;
+    color: var(--color-gray);
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+  .calc-option.selected small {
+    color: var(--color-magenta);
+    opacity: 0.8;
+  }
+  .calc-option--toggle.selected {
+    border-color: var(--color-magenta);
+    background: linear-gradient(135deg, rgba(192, 66, 138, 0.08), rgba(241, 152, 13, 0.08));
+    color: var(--color-magenta);
+  }
+  .calc-result__icon {
+    font-size: 3rem;
+    margin-bottom: var(--space-sm);
+  }
+  .calc-breakdown-grid {
+    max-width: 500px;
+    margin: var(--space-md) auto;
+    text-align: left;
+  }
+  .calc-breakdown-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--color-gray-light);
+    font-size: var(--fs-small);
+    color: var(--color-dark);
+  }
+  .calc-breakdown-item--extra {
+    color: var(--color-orange);
+    font-style: italic;
+  }
+  .calc-breakdown-item--total {
+    border-bottom: none;
+    border-top: 2px solid var(--color-primary);
+    font-weight: 700;
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    padding-top: 0.8rem;
+    color: var(--color-primary);
+  }
+  .calc-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: center;
+    margin-top: var(--space-sm);
+  }
+  .calc-tag {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    background: var(--color-light);
+    border-radius: 50px;
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--color-primary);
+  }
+  body.dark .calc-breakdown-item { color: #d4d1d7; border-bottom-color: #2d2733; }
+  body.dark .calc-breakdown-item--total { color: #f5f3f7; border-top-color: #f5f3f7; }
+  body.dark .calc-tag { background: #2d2733; color: #d4d1d7; }
+  @media (max-width: 768px) {
+    .calc-options--multi { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 480px) {
+    .calc-options--multi { grid-template-columns: 1fr; }
+  }
+  </style>
 
 </body>
 </html>
