@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#544957"/>
+      <stop offset="100%" stop-color="#3d2f42"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#C0428A"/>
+      <stop offset="100%" stop-color="#F1980D"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="0" y="610" width="1200" height="20" fill="url(#accent)"/>
+  <text x="600" y="240" font-family="Poppins,Arial,sans-serif" font-weight="700" font-size="64" fill="#ffffff" text-anchor="middle">Stella'Concept</text>
+  <text x="600" y="320" font-family="Lora,Georgia,serif" font-size="28" fill="rgba(255,255,255,0.8)" text-anchor="middle">L'accompagnement humain pour vos projets</text>
+  <text x="600" y="365" font-family="Lora,Georgia,serif" font-size="28" fill="rgba(255,255,255,0.8)" text-anchor="middle">de travaux et vos transitions de vie</text>
+  <rect x="480" y="420" width="240" height="50" rx="25" fill="url(#accent)"/>
+  <text x="600" y="452" font-family="Poppins,Arial,sans-serif" font-weight="600" font-size="16" fill="#ffffff" text-anchor="middle">stella-concept.fr</text>
+</svg>

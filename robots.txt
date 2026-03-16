@@ -6,4 +6,4 @@ Disallow: /politique-confidentialite.html
 Disallow: /cgu.html
 Disallow: /politique-cookies.html
 
-Sitemap: https://stella-concept.vercel.app/sitemap.xml
+Sitemap: https://stella-concept.fr/sitemap.xml
