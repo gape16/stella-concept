@@ -102,6 +102,28 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // --- Before/After Slider ---
+  document.querySelectorAll('.ba-slider').forEach(slider => {
+    const before = slider.querySelector('.ba-slider__before');
+    const handle = slider.querySelector('.ba-slider__handle');
+    let isDragging = false;
+
+    const updatePosition = (x) => {
+      const rect = slider.getBoundingClientRect();
+      let pos = ((x - rect.left) / rect.width) * 100;
+      pos = Math.max(5, Math.min(95, pos));
+      before.style.width = pos + '%';
+      handle.style.left = pos + '%';
+    };
+
+    slider.addEventListener('mousedown', (e) => { isDragging = true; updatePosition(e.clientX); });
+    slider.addEventListener('touchstart', (e) => { isDragging = true; updatePosition(e.touches[0].clientX); }, { passive: true });
+    window.addEventListener('mousemove', (e) => { if (isDragging) updatePosition(e.clientX); });
+    window.addEventListener('touchmove', (e) => { if (isDragging) updatePosition(e.touches[0].clientX); }, { passive: true });
+    window.addEventListener('mouseup', () => { isDragging = false; });
+    window.addEventListener('touchend', () => { isDragging = false; });
+  });
+
   // --- Validation formulaire contact ---
   const contactForm = document.querySelector('#contact-form');
   if (contactForm) {

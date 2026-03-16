@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculateur de budget - Stella'Concept</title>
+  <meta name="description" content="Estimez le budget de vos travaux de rénovation ou d'aménagement en quelques clics avec notre calculateur interactif.">
+  <meta property="og:title" content="Calculateur de budget - Stella'Concept">
+  <meta property="og:description" content="Estimez votre budget travaux en ligne gratuitement.">
+  <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#544957">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <style>:root { --accent: #F1980D; }</style>
+  <link rel="canonical" href="https://stella-concept.fr/calculateur.html">
+  <meta property="og:image" content="https://stella-concept.fr/img/og-image.png">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" aria-label="Navigation principale">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="Stella'Concept - Accueil">
+        <img src="img/logotype_secondaire.svg" alt="Stella'Concept" class="nav__logo-img">
+      </a>
+      <div class="nav__links" role="menubar">
+        <a href="index.html" role="menuitem">Accueil</a>
+        <a href="services-travaux.html" role="menuitem">Accompagnement travaux</a>
+        <a href="services-transition.html" role="menuitem">Transition de vie</a>
+        <a href="a-propos.html" role="menuitem">À propos</a>
+        <a href="faq.html" role="menuitem">FAQ</a>
+        <a href="contact.html" role="menuitem">Contact</a>
+        <a href="reservation.html" class="btn btn--nav-cta" role="menuitem">Réserver</a>
+      </div>
+      <button class="hamburger" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span class="hamburger__bar"></span>
+        <span class="hamburger__bar"></span>
+        <span class="hamburger__bar"></span>
+      </button>
+    </div>
+    <div class="nav__overlay"></div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero hero--compact">
+    <div class="hero__bg" style="background-color: var(--color-primary);"></div>
+    <div class="hero__overlay" style="background: var(--color-primary);"></div>
+    <div class="hero__content">
+      <span class="section__subtitle">Outil gratuit</span>
+      <h1>Estimez votre budget travaux</h1>
+      <p>Obtenez une estimation personnalisée en quelques clics.</p>
+    </div>
+  </section>
+
+  <!-- Calculateur -->
+  <section class="section">
+    <div class="container">
+      <div class="calculator reveal">
+
+        <!-- Indicateur d'étapes -->
+        <div style="display:flex;justify-content:center;gap:0.5rem;margin-bottom:var(--space-md);">
+          <div class="calc-progress-dot active" data-step="1" style="width:12px;height:12px;border-radius:50%;background:var(--color-magenta);transition:all 0.3s;"></div>
+          <div class="calc-progress-dot" data-step="2" style="width:12px;height:12px;border-radius:50%;background:var(--color-gray-light);transition:all 0.3s;"></div>
+          <div class="calc-progress-dot" data-step="3" style="width:12px;height:12px;border-radius:50%;background:var(--color-gray-light);transition:all 0.3s;"></div>
+          <div class="calc-progress-dot" data-step="4" style="width:12px;height:12px;border-radius:50%;background:var(--color-gray-light);transition:all 0.3s;"></div>
+        </div>
+
+        <!-- Étape 1 : Type de projet -->
+        <div class="calc-step active" data-step="1">
+          <h2 class="calc-step__title">Type de projet</h2>
+          <p class="calc-step__desc">Quel type de travaux envisagez-vous ?</p>
+          <div class="calc-options">
+            <div class="calc-option" data-value="renovation_complete">
+              <span class="calc-option__icon">🔨</span>
+              Rénovation complète
+            </div>
+            <div class="calc-option" data-value="renovation_partielle">
+              <span class="calc-option__icon">🔧</span>
+              Rénovation partielle
+            </div>
+            <div class="calc-option" data-value="construction_neuve">
+              <span class="calc-option__icon">🏗️</span>
+              Construction neuve
+            </div>
+            <div class="calc-option" data-value="amenagement_interieur">
+              <span class="calc-option__icon">🏠</span>
+              Aménagement intérieur
+            </div>
+          </div>
+          <div class="calc-nav">
+            <div></div>
+            <button class="btn btn--cta calc-next" disabled>Suivant</button>
+          </div>
+        </div>
+
+        <!-- Étape 2 : Surface -->
+        <div class="calc-step" data-step="2">
+          <h2 class="calc-step__title">Surface</h2>
+          <p class="calc-step__desc">Quelle est la surface concernée ?</p>
+          <div class="calc-range-value"><span id="calc-surface-value">100</span> m²</div>
+          <input type="range" class="calc-range" id="calc-surface" min="20" max="300" value="100" step="5">
+          <div style="display:flex;justify-content:space-between;color:var(--color-gray);font-size:0.85rem;">
+            <span>20 m²</span>
+            <span>300 m²</span>
+          </div>
+          <div class="calc-nav">
+            <button class="btn btn--outline calc-prev">Précédent</button>
+            <button class="btn btn--cta calc-next">Suivant</button>
+          </div>
+        </div>
+
+        <!-- Étape 3 : Niveau de finition -->
+        <div class="calc-step" data-step="3">
+          <h2 class="calc-step__title">Niveau de finition</h2>
+          <p class="calc-step__desc">Quel standing souhaitez-vous ?</p>
+          <div class="calc-options">
+            <div class="calc-option" data-value="standard">
+              <span class="calc-option__icon">⭐</span>
+              Standard
+            </div>
+            <div class="calc-option" data-value="moyen">
+              <span class="calc-option__icon">⭐⭐</span>
+              Moyen de gamme
+            </div>
+            <div class="calc-option" data-value="haut_de_gamme" style="grid-column: 1 / -1;">
+              <span class="calc-option__icon">⭐⭐⭐</span>
+              Haut de gamme
+            </div>
+          </div>
+          <div class="calc-nav">
+            <button class="btn btn--outline calc-prev">Précédent</button>
+            <button class="btn btn--cta calc-next" disabled>Voir l'estimation</button>
+          </div>
+        </div>
+
+        <!-- Étape 4 : Résultat -->
+        <div class="calc-step" data-step="4">
+          <h2 class="calc-step__title">Votre estimation</h2>
+          <div class="calc-result">
+            <div class="calc-result__range" id="calc-result-range"></div>
+            <p class="calc-result__details" id="calc-result-details"></p>
+            <a href="reservation.html" class="btn btn--cta">Affinez cette estimation avec un expert</a>
+            <p class="calc-result__disclaimer">* Cette estimation est donnée à titre indicatif et ne constitue pas un devis. Chaque projet est unique, contactez-nous pour une évaluation précise.</p>
+          </div>
+          <div class="calc-nav">
+            <button class="btn btn--outline calc-prev">Modifier mes choix</button>
+            <div></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <img src="img/logotype_secondaire_blanc.png" alt="Stella'Concept" class="footer__logo-img" style="height:40px;">
+          <p class="footer__text">Accompagnement personnalisé pour vos projets de travaux et transitions de vie en Charente.</p>
+        </div>
+        <div>
+          <h4 class="footer__title">Navigation</h4>
+          <div class="footer__links">
+            <a href="index.html">Accueil</a>
+            <a href="services-travaux.html">Travaux</a>
+            <a href="services-transition.html">Transition de vie</a>
+            <a href="a-propos.html">À propos</a>
+            <a href="faq.html">FAQ</a>
+            <a href="contact.html">Contact</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__title">Services</h4>
+          <div class="footer__links">
+            <a href="services-travaux.html">Gestion de chantier</a>
+            <a href="services-travaux.html">Suivi de travaux</a>
+            <a href="services-transition.html">Tri & désencombrement</a>
+            <a href="services-transition.html">Accompagnement transition</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__title">Contact</h4>
+          <div class="footer__contact-item">
+            <i data-lucide="phone"></i>
+            <span>06 17 02 67 69</span>
+          </div>
+          <div class="footer__contact-item">
+            <i data-lucide="mail"></i>
+            <span>contact@stellaconcept.fr</span>
+          </div>
+          <div class="footer__contact-item">
+            <i data-lucide="map-pin"></i>
+            <span>Angoulême, Charente (16)</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2025 Stella'Concept. Tous droits réservés.</p>
+        <div class="footer__legal">
+          <a href="mentions-legales.html">Mentions légales</a>
+          <a href="politique-confidentialite.html">Politique de confidentialité</a>
+          <a href="cgu.html">CGU</a>
+          <a href="politique-cookies.html">Politique de cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/animations.js"></script>
+  <script>lucide.createIcons();</script>
+
+  <script>
+  (function() {
+    // --- Calculator Logic ---
+    const priceRanges = {
+      renovation_complete: [800, 1500],
+      renovation_partielle: [400, 800],
+      construction_neuve: [1200, 2000],
+      amenagement_interieur: [300, 600]
+    };
+
+    const finitionLabels = {
+      standard: 'Standard',
+      moyen: 'Moyen de gamme',
+      haut_de_gamme: 'Haut de gamme'
+    };
+
+    const projectLabels = {
+      renovation_complete: 'Rénovation complète',
+      renovation_partielle: 'Rénovation partielle',
+      construction_neuve: 'Construction neuve',
+      amenagement_interieur: 'Aménagement intérieur'
+    };
+
+    const finitionMultipliers = {
+      standard: 0.8,
+      moyen: 1.0,
+      haut_de_gamme: 1.4
+    };
+
+    let currentStep = 1;
+    let projectType = null;
+    let finition = null;
+
+    const steps = document.querySelectorAll('.calc-step');
+    const dots = document.querySelectorAll('.calc-progress-dot');
+    const surfaceSlider = document.getElementById('calc-surface');
+    const surfaceValue = document.getElementById('calc-surface-value');
+
+    function showStep(step) {
+      currentStep = step;
+      steps.forEach(s => s.classList.remove('active'));
+      document.querySelector(`.calc-step[data-step="${step}"]`).classList.add('active');
+      dots.forEach(d => {
+        const ds = parseInt(d.getAttribute('data-step'));
+        d.style.background = ds <= step ? 'var(--color-magenta)' : 'var(--color-gray-light)';
+        d.style.transform = ds === step ? 'scale(1.3)' : 'scale(1)';
+      });
+
+      if (step === 4) calculateResult();
+    }
+
+    // Step 1: Project type selection
+    const step1Options = document.querySelector('.calc-step[data-step="1"]').querySelectorAll('.calc-option');
+    const step1Next = document.querySelector('.calc-step[data-step="1"]').querySelector('.calc-next');
+
+    step1Options.forEach(opt => {
+      opt.addEventListener('click', () => {
+        step1Options.forEach(o => o.classList.remove('selected'));
+        opt.classList.add('selected');
+        projectType = opt.getAttribute('data-value');
+        step1Next.disabled = false;
+      });
+    });
+
+    // Step 2: Surface slider
+    surfaceSlider.addEventListener('input', () => {
+      surfaceValue.textContent = surfaceSlider.value;
+    });
+
+    // Step 3: Finition selection
+    const step3Options = document.querySelector('.calc-step[data-step="3"]').querySelectorAll('.calc-option');
+    const step3Next = document.querySelector('.calc-step[data-step="3"]').querySelector('.calc-next');
+
+    step3Options.forEach(opt => {
+      opt.addEventListener('click', () => {
+        step3Options.forEach(o => o.classList.remove('selected'));
+        opt.classList.add('selected');
+        finition = opt.getAttribute('data-value');
+        step3Next.disabled = false;
+      });
+    });
+
+    // Navigation buttons
+    document.querySelectorAll('.calc-next').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (!btn.disabled) showStep(currentStep + 1);
+      });
+    });
+
+    document.querySelectorAll('.calc-prev').forEach(btn => {
+      btn.addEventListener('click', () => {
+        showStep(currentStep - 1);
+      });
+    });
+
+    // Calculate result
+    function calculateResult() {
+      const surface = parseInt(surfaceSlider.value);
+      const range = priceRanges[projectType];
+      const multiplier = finitionMultipliers[finition];
+
+      const min = Math.round(range[0] * surface * multiplier);
+      const max = Math.round(range[1] * surface * multiplier);
+
+      const formatPrice = (n) => n.toLocaleString('fr-FR');
+
+      document.getElementById('calc-result-range').textContent =
+        `Entre ${formatPrice(min)}\u202F\u20AC et ${formatPrice(max)}\u202F\u20AC`;
+
+      document.getElementById('calc-result-details').innerHTML =
+        `${projectLabels[projectType]} \u2022 ${surface}\u00A0m\u00B2 \u2022 Finition ${finitionLabels[finition]}`;
+    }
+  })();
+  </script>
+
+</body>
+</html>

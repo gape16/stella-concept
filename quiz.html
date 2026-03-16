@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz - Stella'Concept | Quel accompagnement pour vous ?</title>
+  <meta name="description" content="Répondez à 3 questions pour découvrir la formule Stella'Concept adaptée à votre situation. Accompagnement travaux et transition de vie à Angoulême.">
+  <meta property="og:title" content="Quiz - Stella'Concept | Quel accompagnement pour vous ?">
+  <meta property="og:description" content="Répondez à 3 questions pour découvrir la formule adaptée à votre situation.">
+  <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#544957">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <style>:root { --accent: #C0428A; }</style>
+  <link rel="canonical" href="https://stella-concept.fr/quiz.html">
+  <meta property="og:image" content="https://stella-concept.fr/img/og-image.png">
+  <style>
+    .quiz {
+      max-width: 700px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: var(--radius-lg, 16px);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      padding: var(--space-lg, 2.5rem);
+      position: relative;
+      overflow: hidden;
+    }
+    .quiz::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #C0428A, #F1980D, #CCD537);
+    }
+    .quiz__stepper {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-bottom: var(--space-md, 2rem);
+    }
+    .quiz__dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #e0d6e3;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .quiz__dot--active {
+      background: #C0428A;
+      transform: scale(1.25);
+    }
+    .quiz__dot--done {
+      background: #C0428A;
+    }
+    .quiz__question {
+      display: none;
+      animation: quizFadeIn 0.4s ease;
+    }
+    .quiz__question--active {
+      display: block;
+    }
+    @keyframes quizFadeIn {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .quiz__title {
+      font-family: 'Lora', serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--color-dark, #2a2a2a);
+      text-align: center;
+      margin-bottom: var(--space-md, 2rem);
+    }
+    .quiz__options {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .quiz__option {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.25rem;
+      border: 2px solid #e0d6e3;
+      border-radius: var(--radius-md, 12px);
+      cursor: pointer;
+      transition: border-color 0.25s, background 0.25s, transform 0.15s;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      background: #fff;
+    }
+    .quiz__option:hover {
+      border-color: #C0428A;
+      background: rgba(192, 66, 138, 0.04);
+      transform: translateX(4px);
+    }
+    .quiz__option-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+    .quiz__result {
+      display: none;
+      text-align: center;
+      animation: quizFadeIn 0.5s ease;
+    }
+    .quiz__result--active {
+      display: block;
+    }
+    .quiz__result-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    .quiz__result-title {
+      font-family: 'Lora', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #C0428A;
+      margin-bottom: 0.75rem;
+    }
+    .quiz__result-desc {
+      color: var(--color-gray, #6b6b6b);
+      margin-bottom: var(--space-md, 2rem);
+      line-height: 1.7;
+    }
+    .quiz__result-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .quiz__back {
+      display: inline-block;
+      margin-top: var(--space-md, 2rem);
+      color: var(--color-gray, #6b6b6b);
+      cursor: pointer;
+      font-size: 0.9rem;
+      border: none;
+      background: none;
+      font-family: 'Poppins', sans-serif;
+      transition: color 0.2s;
+    }
+    .quiz__back:hover {
+      color: #C0428A;
+    }
+    .quiz__restart {
+      display: inline-block;
+      margin-top: var(--space-md, 2rem);
+      color: #C0428A;
+      cursor: pointer;
+      font-size: 0.9rem;
+      border: none;
+      background: none;
+      font-family: 'Poppins', sans-serif;
+      text-decoration: underline;
+      transition: opacity 0.2s;
+    }
+    .quiz__restart:hover {
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" aria-label="Navigation principale">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="Stella'Concept - Accueil">
+        <img src="img/logotype_secondaire.svg" alt="Stella'Concept" class="nav__logo-img">
+      </a>
+      <div class="nav__links" role="menubar">
+        <a href="index.html" role="menuitem">Accueil</a>
+        <a href="services-travaux.html" role="menuitem">Accompagnement travaux</a>
+        <a href="services-transition.html" role="menuitem">Transition de vie</a>
+        <a href="a-propos.html" role="menuitem">À propos</a>
+        <a href="faq.html" role="menuitem">FAQ</a>
+        <a href="contact.html" role="menuitem">Contact</a>
+        <a href="reservation.html" class="btn btn--nav-cta" role="menuitem">Réserver</a>
+      </div>
+      <button class="hamburger" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span class="hamburger__bar"></span>
+        <span class="hamburger__bar"></span>
+        <span class="hamburger__bar"></span>
+      </button>
+    </div>
+    <div class="nav__overlay"></div>
+  </nav>
+
+  <!-- Hero compact -->
+  <section class="hero hero--compact">
+    <div class="hero__bg" style="background-color: var(--color-primary);"></div>
+    <div class="hero__overlay" style="background: var(--color-primary);"></div>
+    <div class="hero__content">
+      <h1>Quel accompagnement pour vous ?</h1>
+      <p>Répondez à 3 questions pour découvrir la formule adaptée à votre situation.</p>
+    </div>
+  </section>
+
+  <!-- Quiz -->
+  <section class="section">
+    <div class="container">
+      <div id="quiz-container" class="reveal">
+        <div class="quiz">
+          <!-- Stepper -->
+          <div class="quiz__stepper">
+            <div class="quiz__dot quiz__dot--active" data-step="0"></div>
+            <div class="quiz__dot" data-step="1"></div>
+            <div class="quiz__dot" data-step="2"></div>
+          </div>
+
+          <!-- Question 1 -->
+          <div class="quiz__question quiz__question--active" data-question="0">
+            <h2 class="quiz__title">Quelle est votre situation ?</h2>
+            <div class="quiz__options">
+              <div class="quiz__option" data-value="travaux">
+                <span class="quiz__option-icon">🏗️</span>
+                <span>J'ai un projet de travaux</span>
+              </div>
+              <div class="quiz__option" data-value="transition">
+                <span class="quiz__option-icon">🌱</span>
+                <span>Je vis une transition de vie</span>
+              </div>
+              <div class="quiz__option" data-value="les-deux">
+                <span class="quiz__option-icon">✨</span>
+                <span>Les deux</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Question 2 -->
+          <div class="quiz__question" data-question="1">
+            <h2 class="quiz__title">Où en êtes-vous ?</h2>
+            <div class="quiz__options">
+              <div class="quiz__option" data-value="reflechis">
+                <span class="quiz__option-icon">🤔</span>
+                <span>Je réfléchis encore</span>
+              </div>
+              <div class="quiz__option" data-value="demarches">
+                <span class="quiz__option-icon">📋</span>
+                <span>J'ai commencé les démarches</span>
+              </div>
+              <div class="quiz__option" data-value="urgent">
+                <span class="quiz__option-icon">⚡</span>
+                <span>C'est urgent</span>
+              </div>
+            </div>
+            <button class="quiz__back" onclick="quizBack()">← Revenir à la question précédente</button>
+          </div>
+
+          <!-- Question 3 -->
+          <div class="quiz__question" data-question="2">
+            <h2 class="quiz__title">De quoi avez-vous le plus besoin ?</h2>
+            <div class="quiz__options">
+              <div class="quiz__option" data-value="conseils">
+                <span class="quiz__option-icon">💡</span>
+                <span>Des conseils pour démarrer</span>
+              </div>
+              <div class="quiz__option" data-value="gerer">
+                <span class="quiz__option-icon">🤝</span>
+                <span>Quelqu'un pour gérer à ma place</span>
+              </div>
+              <div class="quiz__option" data-value="soutien">
+                <span class="quiz__option-icon">💛</span>
+                <span>Un soutien moral et pratique</span>
+              </div>
+            </div>
+            <button class="quiz__back" onclick="quizBack()">← Revenir à la question précédente</button>
+          </div>
+
+          <!-- Result -->
+          <div class="quiz__result" id="quiz-result">
+            <div class="quiz__result-icon" id="result-icon"></div>
+            <h2 class="quiz__result-title" id="result-title"></h2>
+            <p class="quiz__result-desc" id="result-desc"></p>
+            <div class="quiz__result-actions" id="result-actions"></div>
+            <button class="quiz__restart" onclick="quizRestart()">Recommencer le quiz</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__logo">
+            <img src="img/logotype_secondaire_blanc.png" alt="Stella'Concept" class="footer__logo-img" style="height:40px;">
+          </div>
+          <p class="footer__text">Accompagnement personnalisé pour vos projets de travaux et transitions de vie en Charente.</p>
+        </div>
+        <div>
+          <h4 class="footer__title">Navigation</h4>
+          <div class="footer__links">
+            <a href="index.html">Accueil</a>
+            <a href="services-travaux.html">Accompagnement travaux</a>
+            <a href="services-transition.html">Transition de vie</a>
+            <a href="a-propos.html">À propos</a>
+            <a href="faq.html">FAQ</a>
+            <a href="contact.html">Contact</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__title">Services</h4>
+          <div class="footer__links">
+            <a href="services-travaux.html">Gestion de chantier</a>
+            <a href="services-travaux.html">Suivi de travaux</a>
+            <a href="services-transition.html">Tri & désencombrement</a>
+            <a href="services-transition.html">Accompagnement transition</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__title">Contact</h4>
+          <div class="footer__contact-item">
+            <i data-lucide="phone"></i>
+            <span>06 17 02 67 69</span>
+          </div>
+          <div class="footer__contact-item">
+            <i data-lucide="mail"></i>
+            <span>contact@stellaconcept.fr</span>
+          </div>
+          <div class="footer__contact-item">
+            <i data-lucide="map-pin"></i>
+            <span>Angoulême, Charente (16)</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2025 Stella'Concept. Tous droits réservés.</p>
+        <div class="footer__legal">
+          <a href="mentions-legales.html">Mentions légales</a>
+          <a href="politique-confidentialite.html">Politique de confidentialité</a>
+          <a href="cgu.html">CGU</a>
+          <a href="politique-cookies.html">Politique de cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/animations.js"></script>
+  <script>lucide.createIcons();</script>
+
+  <script>
+    (function() {
+      var answers = [];
+      var currentStep = 0;
+      var questions = document.querySelectorAll('.quiz__question');
+      var dots = document.querySelectorAll('.quiz__dot');
+      var resultEl = document.getElementById('quiz-result');
+
+      // Attach click handlers to all options
+      document.querySelectorAll('.quiz__option').forEach(function(option) {
+        option.addEventListener('click', function() {
+          var value = this.getAttribute('data-value');
+          answers[currentStep] = value;
+          if (currentStep < 2) {
+            currentStep++;
+            showStep(currentStep);
+          } else {
+            showResult();
+          }
+        });
+      });
+
+      function showStep(step) {
+        questions.forEach(function(q, i) {
+          q.classList.toggle('quiz__question--active', i === step);
+        });
+        dots.forEach(function(d, i) {
+          d.classList.remove('quiz__dot--active', 'quiz__dot--done');
+          if (i < step) d.classList.add('quiz__dot--done');
+          if (i === step) d.classList.add('quiz__dot--active');
+        });
+        resultEl.classList.remove('quiz__result--active');
+      }
+
+      function showResult() {
+        questions.forEach(function(q) {
+          q.classList.remove('quiz__question--active');
+        });
+        dots.forEach(function(d) {
+          d.classList.remove('quiz__dot--active');
+          d.classList.add('quiz__dot--done');
+        });
+
+        var situation = answers[0];
+        var avancement = answers[1];
+        var besoin = answers[2];
+
+        var result = getResult(situation, avancement, besoin);
+
+        document.getElementById('result-icon').textContent = result.icon;
+        document.getElementById('result-title').textContent = result.title;
+        document.getElementById('result-desc').textContent = result.desc;
+        document.getElementById('result-actions').innerHTML =
+          '<a href="' + result.serviceLink + '" class="btn btn--primary">Découvrir ce service</a>' +
+          '<a href="reservation.html" class="btn btn--outline">Réserver mon appel</a>';
+
+        resultEl.classList.add('quiz__result--active');
+      }
+
+      function getResult(situation, avancement, besoin) {
+        // If travaux + urgent + gérer → Suivi complet travaux
+        if ((situation === 'travaux' || situation === 'les-deux') && avancement === 'urgent' && besoin === 'gerer') {
+          return {
+            icon: '🏗️',
+            title: 'Suivi complet travaux',
+            desc: 'Vous avez besoin d\'un accompagnement complet pour gérer vos travaux de A à Z. Notre formule Suivi complet est faite pour vous : coordination des artisans, suivi de chantier, réception des travaux.',
+            serviceLink: 'services-travaux.html'
+          };
+        }
+        // If transition + any → Accompagnement transition
+        if (situation === 'transition') {
+          return {
+            icon: '🌱',
+            title: 'Accompagnement transition',
+            desc: 'Vous traversez une période de changement et avez besoin d\'un soutien humain et concret. Notre accompagnement transition de vie vous aide à chaque étape : tri, désencombrement, réorganisation.',
+            serviceLink: 'services-transition.html'
+          };
+        }
+        // If réfléchis + conseils → Séance conseil
+        if (avancement === 'reflechis' && besoin === 'conseils') {
+          return {
+            icon: '💡',
+            title: 'Séance conseil',
+            desc: 'Vous êtes au début de votre réflexion et cherchez des conseils éclairés. Une séance conseil vous permettra d\'y voir plus clair, de définir vos priorités et de repartir avec un plan d\'action concret.',
+            serviceLink: 'tarifs.html'
+          };
+        }
+        // Default → Accompagnement sur-mesure
+        return {
+          icon: '✨',
+          title: 'Accompagnement sur-mesure',
+          desc: 'Votre situation est unique et mérite une réponse personnalisée. Contactez-nous pour un premier échange gratuit : nous construirons ensemble la formule qui vous correspond parfaitement.',
+          serviceLink: 'contact.html'
+        };
+      }
+
+      // Expose back and restart functions globally
+      window.quizBack = function() {
+        if (currentStep > 0) {
+          currentStep--;
+          showStep(currentStep);
+        }
+      };
+
+      window.quizRestart = function() {
+        answers = [];
+        currentStep = 0;
+        showStep(0);
+      };
+    })();
+  </script>
+</body>
+</html>
