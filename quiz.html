@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quiz - Stella'Concept | Quel accompagnement pour vous ?</title>
-  <meta name="description" content="Répondez à 3 questions pour découvrir la formule Stella'Concept adaptée à votre situation. Accompagnement travaux et transition de vie à Angoulême.">
-  <meta property="og:title" content="Quiz - Stella'Concept | Quel accompagnement pour vous ?">
-  <meta property="og:description" content="Répondez à 3 questions pour découvrir la formule adaptée à votre situation.">
+  <title>Diagnostic projet - Stella'Concept | Quel accompagnement pour vous ?</title>
+  <meta name="description" content="Répondez à notre questionnaire détaillé et recevez une recommandation personnalisée. Accompagnement travaux et transition de vie à Angoulême.">
+  <meta property="og:title" content="Diagnostic projet - Stella'Concept | Quel accompagnement pour vous ?">
+  <meta property="og:description" content="Répondez à ce questionnaire détaillé et recevez une recommandation personnalisée.">
   <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#544957">
@@ -19,124 +19,66 @@
   <link rel="canonical" href="https://stella-concept.fr/quiz.html">
   <meta property="og:image" content="https://stella-concept.fr/img/og-image.png">
   <style>
-    .quiz {
-      max-width: 700px;
+    /* Quiz-specific styles extending calculator pattern */
+    .quiz-card {
+      max-width: 760px;
       margin: 0 auto;
-      background: #fff;
-      border-radius: var(--radius-lg, 16px);
-      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-      padding: var(--space-lg, 2.5rem);
-      position: relative;
-      overflow: hidden;
     }
-    .quiz::before {
-      content: '';
+    .calc-step__desc {
+      text-align: center;
+      color: var(--color-gray, #6b6b6b);
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+    }
+    .calc-options--multi .calc-option.selected {
+      border-color: var(--accent, #C0428A);
+      background: rgba(192, 66, 138, 0.06);
+    }
+    .calc-options--multi .calc-option.selected::after {
+      content: '\2713';
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, #C0428A, #F1980D, #CCD537);
+      top: 0.5rem;
+      right: 0.75rem;
+      color: var(--accent, #C0428A);
+      font-weight: 700;
+      font-size: 1.1rem;
     }
-    .quiz__stepper {
-      display: flex;
-      justify-content: center;
-      gap: 0.75rem;
-      margin-bottom: var(--space-md, 2rem);
+    .calc-options--multi .calc-option {
+      position: relative;
     }
-    .quiz__dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: #e0d6e3;
-      transition: background 0.3s, transform 0.3s;
-    }
-    .quiz__dot--active {
-      background: #C0428A;
-      transform: scale(1.25);
-    }
-    .quiz__dot--done {
-      background: #C0428A;
-    }
-    .quiz__question {
+    .quiz-text-input {
       display: none;
-      animation: quizFadeIn 0.4s ease;
+      margin-top: 1rem;
     }
-    .quiz__question--active {
+    .quiz-text-input.visible {
       display: block;
     }
-    @keyframes quizFadeIn {
-      from { opacity: 0; transform: translateY(16px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .quiz__title {
-      font-family: 'Lora', serif;
-      font-size: 1.35rem;
-      font-weight: 600;
-      color: var(--color-dark, #2a2a2a);
-      text-align: center;
-      margin-bottom: var(--space-md, 2rem);
-    }
-    .quiz__options {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-    .quiz__option {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      padding: 1rem 1.25rem;
+    .quiz-text-input input {
+      width: 100%;
+      padding: 0.85rem 1rem;
       border: 2px solid #e0d6e3;
       border-radius: var(--radius-md, 12px);
-      cursor: pointer;
-      transition: border-color 0.25s, background 0.25s, transform 0.15s;
       font-family: 'Poppins', sans-serif;
-      font-size: 1rem;
-      background: #fff;
+      font-size: 0.95rem;
+      background: var(--color-bg, #fff);
+      color: var(--color-dark, #2a2a2a);
+      transition: border-color 0.3s;
     }
-    .quiz__option:hover {
-      border-color: #C0428A;
-      background: rgba(192, 66, 138, 0.04);
-      transform: translateX(4px);
+    .quiz-text-input input:focus {
+      outline: none;
+      border-color: var(--accent, #C0428A);
     }
-    .quiz__option-icon {
-      font-size: 1.5rem;
-      flex-shrink: 0;
-    }
-    .quiz__result {
-      display: none;
-      text-align: center;
-      animation: quizFadeIn 0.5s ease;
-    }
-    .quiz__result--active {
-      display: block;
-    }
-    .quiz__result-icon {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-    }
-    .quiz__result-title {
-      font-family: 'Lora', serif;
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: #C0428A;
-      margin-bottom: 0.75rem;
-    }
-    .quiz__result-desc {
-      color: var(--color-gray, #6b6b6b);
-      margin-bottom: var(--space-md, 2rem);
-      line-height: 1.7;
-    }
-    .quiz__result-actions {
+    .quiz-nav {
       display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 2rem;
       gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
     }
-    .quiz__back {
-      display: inline-block;
-      margin-top: var(--space-md, 2rem);
+    .quiz-nav__back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
       color: var(--color-gray, #6b6b6b);
       cursor: pointer;
       font-size: 0.9rem;
@@ -144,14 +86,132 @@
       background: none;
       font-family: 'Poppins', sans-serif;
       transition: color 0.2s;
+      padding: 0.5rem 0;
     }
-    .quiz__back:hover {
-      color: #C0428A;
+    .quiz-nav__back:hover {
+      color: var(--accent, #C0428A);
     }
-    .quiz__restart {
+    .quiz-nav__next {
+      margin-left: auto;
+    }
+    /* Form step */
+    .quiz-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .quiz-form__group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+    .quiz-form__group label {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
+      font-size: 0.9rem;
+      color: var(--color-dark, #2a2a2a);
+    }
+    .quiz-form__group label .required {
+      color: var(--accent, #C0428A);
+    }
+    .quiz-form__group input,
+    .quiz-form__group textarea {
+      padding: 0.85rem 1rem;
+      border: 2px solid #e0d6e3;
+      border-radius: var(--radius-md, 12px);
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95rem;
+      background: var(--color-bg, #fff);
+      color: var(--color-dark, #2a2a2a);
+      transition: border-color 0.3s;
+      resize: vertical;
+    }
+    .quiz-form__group input:focus,
+    .quiz-form__group textarea:focus {
+      outline: none;
+      border-color: var(--accent, #C0428A);
+    }
+    .quiz-form__group textarea {
+      min-height: 100px;
+    }
+    .quiz-form__consent {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.85rem;
+      color: var(--color-gray, #6b6b6b);
+      line-height: 1.5;
+    }
+    .quiz-form__consent input[type="checkbox"] {
+      margin-top: 0.25rem;
+      accent-color: var(--accent, #C0428A);
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+    .quiz-form__error {
+      color: #d32f2f;
+      font-size: 0.85rem;
+      display: none;
+    }
+    .quiz-form__error.visible {
+      display: block;
+    }
+    /* Result step */
+    .quiz-result {
+      text-align: center;
+      animation: quizSlideIn 0.5s ease;
+    }
+    @keyframes quizSlideIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .quiz-result__badge {
       display: inline-block;
-      margin-top: var(--space-md, 2rem);
-      color: #C0428A;
+      padding: 0.4rem 1.25rem;
+      background: linear-gradient(135deg, rgba(192,66,138,0.12), rgba(241,152,13,0.12));
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent, #C0428A);
+      margin-bottom: 1.25rem;
+      font-family: 'Poppins', sans-serif;
+    }
+    .quiz-result__title {
+      font-family: 'Lora', serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--accent, #C0428A);
+      margin-bottom: 1rem;
+    }
+    .quiz-result__desc {
+      color: var(--color-gray, #6b6b6b);
+      line-height: 1.75;
+      margin-bottom: 2rem;
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 1rem;
+    }
+    .quiz-result__notice {
+      background: rgba(192,66,138,0.06);
+      border-radius: var(--radius-md, 12px);
+      padding: 1rem 1.5rem;
+      font-size: 0.9rem;
+      color: var(--color-dark, #2a2a2a);
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+    .quiz-result__actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+    .quiz-result__restart {
+      display: inline-block;
+      color: var(--accent, #C0428A);
       cursor: pointer;
       font-size: 0.9rem;
       border: none;
@@ -160,8 +220,55 @@
       text-decoration: underline;
       transition: opacity 0.2s;
     }
-    .quiz__restart:hover {
+    .quiz-result__restart:hover {
       opacity: 0.7;
+    }
+    /* Loading spinner */
+    .quiz-loading {
+      display: none;
+      text-align: center;
+      padding: 3rem 1rem;
+    }
+    .quiz-loading.visible {
+      display: block;
+    }
+    .quiz-loading__spinner {
+      width: 48px;
+      height: 48px;
+      border: 4px solid #e0d6e3;
+      border-top-color: var(--accent, #C0428A);
+      border-radius: 50%;
+      animation: quizSpin 0.8s linear infinite;
+      margin: 0 auto 1.5rem;
+    }
+    @keyframes quizSpin {
+      to { transform: rotate(360deg); }
+    }
+    .quiz-loading__text {
+      font-family: 'Poppins', sans-serif;
+      color: var(--color-gray, #6b6b6b);
+      font-size: 0.95rem;
+    }
+    /* Dark mode adjustments */
+    [data-theme="dark"] .quiz-text-input input,
+    [data-theme="dark"] .quiz-form__group input,
+    [data-theme="dark"] .quiz-form__group textarea {
+      background: var(--color-bg, #1a1a2e);
+      color: var(--color-light, #f0f0f0);
+      border-color: rgba(255,255,255,0.15);
+    }
+    [data-theme="dark"] .quiz-form__group label {
+      color: var(--color-light, #f0f0f0);
+    }
+    [data-theme="dark"] .quiz-result__notice {
+      background: rgba(192,66,138,0.12);
+      color: var(--color-light, #f0f0f0);
+    }
+    @media (max-width: 600px) {
+      .quiz-result__title { font-size: 1.3rem; }
+      .quiz-nav { flex-direction: column; }
+      .quiz-nav__next { margin-left: 0; width: 100%; }
+      .quiz-nav__back { align-self: flex-start; }
     }
   </style>
 </head>
@@ -197,90 +304,310 @@
     <div class="hero__overlay" style="background: var(--color-primary);"></div>
     <div class="hero__content">
       <h1>Quel accompagnement pour vous ?</h1>
-      <p>Répondez à 3 questions pour découvrir la formule adaptée à votre situation.</p>
+      <p>Répondez à ce questionnaire détaillé et recevez une recommandation personnalisée.</p>
     </div>
   </section>
 
   <!-- Quiz -->
   <section class="section">
     <div class="container">
-      <div id="quiz-container" class="reveal">
-        <div class="quiz">
-          <!-- Stepper -->
-          <div class="quiz__stepper">
-            <div class="quiz__dot quiz__dot--active" data-step="0"></div>
-            <div class="quiz__dot" data-step="1"></div>
-            <div class="quiz__dot" data-step="2"></div>
-          </div>
+      <div class="quiz-card calculator reveal" id="quizCalc">
 
-          <!-- Question 1 -->
-          <div class="quiz__question quiz__question--active" data-question="0">
-            <h2 class="quiz__title">Quelle est votre situation ?</h2>
-            <div class="quiz__options">
-              <div class="quiz__option" data-value="travaux">
-                <span class="quiz__option-icon">🏗️</span>
-                <span>J'ai un projet de travaux</span>
-              </div>
-              <div class="quiz__option" data-value="transition">
-                <span class="quiz__option-icon">🌱</span>
-                <span>Je vis une transition de vie</span>
-              </div>
-              <div class="quiz__option" data-value="les-deux">
-                <span class="quiz__option-icon">✨</span>
-                <span>Les deux</span>
-              </div>
+        <!-- Progress bar -->
+        <div class="calc-progress">
+          <div class="calc-progress__bar" id="quizProgressBar" style="width:12.5%"></div>
+        </div>
+        <div class="calc-progress__label" id="quizProgressLabel">Étape 1 sur 8</div>
+
+        <!-- Step 1: Situation -->
+        <div class="calc-step active" data-step="1">
+          <h2 class="calc-step__title">Quelle est votre situation actuelle ?</h2>
+          <p class="calc-step__desc">Sélectionnez la réponse qui vous correspond le mieux.</p>
+          <div class="calc-options" id="step1Options">
+            <div class="calc-option" data-value="travaux">
+              <span class="calc-option__icon">🏗️</span>
+              <strong>J'ai un projet de travaux</strong>
+              <small>Rénovation, construction, réhabilitation</small>
             </div>
-          </div>
-
-          <!-- Question 2 -->
-          <div class="quiz__question" data-question="1">
-            <h2 class="quiz__title">Où en êtes-vous ?</h2>
-            <div class="quiz__options">
-              <div class="quiz__option" data-value="reflechis">
-                <span class="quiz__option-icon">🤔</span>
-                <span>Je réfléchis encore</span>
-              </div>
-              <div class="quiz__option" data-value="demarches">
-                <span class="quiz__option-icon">📋</span>
-                <span>J'ai commencé les démarches</span>
-              </div>
-              <div class="quiz__option" data-value="urgent">
-                <span class="quiz__option-icon">⚡</span>
-                <span>C'est urgent</span>
-              </div>
+            <div class="calc-option" data-value="transition">
+              <span class="calc-option__icon">🌱</span>
+              <strong>Je vis une transition de vie</strong>
+              <small>Déménagement, deuil, séparation, naissance...</small>
             </div>
-            <button class="quiz__back" onclick="quizBack()">← Revenir à la question précédente</button>
-          </div>
-
-          <!-- Question 3 -->
-          <div class="quiz__question" data-question="2">
-            <h2 class="quiz__title">De quoi avez-vous le plus besoin ?</h2>
-            <div class="quiz__options">
-              <div class="quiz__option" data-value="conseils">
-                <span class="quiz__option-icon">💡</span>
-                <span>Des conseils pour démarrer</span>
-              </div>
-              <div class="quiz__option" data-value="gerer">
-                <span class="quiz__option-icon">🤝</span>
-                <span>Quelqu'un pour gérer à ma place</span>
-              </div>
-              <div class="quiz__option" data-value="soutien">
-                <span class="quiz__option-icon">💛</span>
-                <span>Un soutien moral et pratique</span>
-              </div>
+            <div class="calc-option" data-value="pro">
+              <span class="calc-option__icon">🔧</span>
+              <strong>Je suis un professionnel du bâtiment</strong>
+              <small>J'ai besoin de renfort sur un chantier</small>
             </div>
-            <button class="quiz__back" onclick="quizBack()">← Revenir à la question précédente</button>
-          </div>
-
-          <!-- Result -->
-          <div class="quiz__result" id="quiz-result">
-            <div class="quiz__result-icon" id="result-icon"></div>
-            <h2 class="quiz__result-title" id="result-title"></h2>
-            <p class="quiz__result-desc" id="result-desc"></p>
-            <div class="quiz__result-actions" id="result-actions"></div>
-            <button class="quiz__restart" onclick="quizRestart()">Recommencer le quiz</button>
+            <div class="calc-option" data-value="indecis">
+              <span class="calc-option__icon">💡</span>
+              <strong>Je ne sais pas encore</strong>
+              <small>J'ai besoin de conseils</small>
+            </div>
           </div>
         </div>
+
+        <!-- Step 2: Type de projet (conditional) -->
+        <div class="calc-step" data-step="2">
+          <h2 class="calc-step__title" id="step2Title">Quel type de projet ?</h2>
+          <p class="calc-step__desc" id="step2Desc">Précisez la nature de votre projet.</p>
+          <div class="calc-options" id="step2Options">
+            <!-- Populated dynamically -->
+          </div>
+          <div class="quiz-nav">
+            <button class="quiz-nav__back" onclick="quizBack()">&#8592; Retour</button>
+          </div>
+        </div>
+
+        <!-- Step 3: Urgence -->
+        <div class="calc-step" data-step="3">
+          <h2 class="calc-step__title">Quel est votre calendrier ?</h2>
+          <p class="calc-step__desc">Nous adaptons notre accompagnement à votre rythme.</p>
+          <div class="calc-options" id="step3Options">
+            <div class="calc-option" data-value="urgent">
+              <span class="calc-option__icon">⚡</span>
+              <strong>C'est urgent</strong>
+              <small>Dans le mois</small>
+            </div>
+            <div class="calc-option" data-value="3mois">
+              <span class="calc-option__icon">📅</span>
+              <strong>Dans les 3 prochains mois</strong>
+              <small></small>
+            </div>
+            <div class="calc-option" data-value="6mois">
+              <span class="calc-option__icon">🗓️</span>
+              <strong>Dans les 6 prochains mois</strong>
+              <small></small>
+            </div>
+            <div class="calc-option" data-value="pasdedate">
+              <span class="calc-option__icon">🔍</span>
+              <strong>Pas de date précise</strong>
+              <small>Je me renseigne</small>
+            </div>
+          </div>
+          <div class="quiz-nav">
+            <button class="quiz-nav__back" onclick="quizBack()">&#8592; Retour</button>
+          </div>
+        </div>
+
+        <!-- Step 4: Budget -->
+        <div class="calc-step" data-step="4">
+          <h2 class="calc-step__title">Avez-vous une enveloppe budget ?</h2>
+          <p class="calc-step__desc">Cette information nous aide à vous orienter au mieux.</p>
+          <div class="calc-options" id="step4Options">
+            <div class="calc-option" data-value="moins10k">
+              <span class="calc-option__icon">💰</span>
+              <strong>Moins de 10 000 &euro;</strong>
+              <small></small>
+            </div>
+            <div class="calc-option" data-value="10k-30k">
+              <span class="calc-option__icon">💰</span>
+              <strong>10 000 à 30 000 &euro;</strong>
+              <small></small>
+            </div>
+            <div class="calc-option" data-value="30k-80k">
+              <span class="calc-option__icon">💰</span>
+              <strong>30 000 à 80 000 &euro;</strong>
+              <small></small>
+            </div>
+            <div class="calc-option" data-value="plus80k">
+              <span class="calc-option__icon">💰</span>
+              <strong>Plus de 80 000 &euro;</strong>
+              <small></small>
+            </div>
+            <div class="calc-option" data-value="nsp-budget">
+              <span class="calc-option__icon">🤷</span>
+              <strong>Je ne sais pas encore</strong>
+              <small></small>
+            </div>
+          </div>
+          <div class="quiz-nav">
+            <button class="quiz-nav__back" onclick="quizBack()">&#8592; Retour</button>
+          </div>
+        </div>
+
+        <!-- Step 5: Localisation -->
+        <div class="calc-step" data-step="5">
+          <h2 class="calc-step__title">Où se situe votre projet ?</h2>
+          <p class="calc-step__desc">Nous intervenons principalement en Charente et alentours.</p>
+          <div class="calc-options" id="step5Options">
+            <div class="calc-option" data-value="angouleme">
+              <span class="calc-option__icon">📍</span>
+              <strong>Angoulême et agglomération</strong>
+              <small></small>
+            </div>
+            <div class="calc-option" data-value="charente">
+              <span class="calc-option__icon">📍</span>
+              <strong>Charente (hors agglo)</strong>
+              <small></small>
+            </div>
+            <div class="calc-option" data-value="limitrophe">
+              <span class="calc-option__icon">📍</span>
+              <strong>Département limitrophe</strong>
+              <small>Préciser ci-dessous</small>
+            </div>
+            <div class="calc-option" data-value="autre-lieu">
+              <span class="calc-option__icon">📍</span>
+              <strong>Autre</strong>
+              <small>Préciser ci-dessous</small>
+            </div>
+          </div>
+          <div class="quiz-text-input" id="villeInput">
+            <input type="text" id="villeField" placeholder="Précisez votre ville" maxlength="100">
+          </div>
+          <div class="quiz-nav">
+            <button class="quiz-nav__back" onclick="quizBack()">&#8592; Retour</button>
+            <button class="btn btn--primary quiz-nav__next" id="step5Next" onclick="quizNextFromStep5()" style="display:none;">Continuer &#8594;</button>
+          </div>
+        </div>
+
+        <!-- Step 6: Besoins spécifiques (multi-select) -->
+        <div class="calc-step" data-step="6">
+          <h2 class="calc-step__title">De quoi avez-vous le plus besoin ?</h2>
+          <p class="calc-step__desc">Vous pouvez sélectionner plusieurs réponses.</p>
+          <div class="calc-options calc-options--multi" id="step6Options">
+            <div class="calc-option" data-value="conseils">
+              <span class="calc-option__icon">💡</span>
+              <strong>Conseils et orientation</strong>
+              <small></small>
+            </div>
+            <div class="calc-option" data-value="artisans">
+              <span class="calc-option__icon">🔍</span>
+              <strong>Recherche d'artisans de confiance</strong>
+              <small></small>
+            </div>
+            <div class="calc-option" data-value="administratif">
+              <span class="calc-option__icon">📋</span>
+              <strong>Gestion administrative</strong>
+              <small>Devis, assurances, autorisations</small>
+            </div>
+            <div class="calc-option" data-value="coordination">
+              <span class="calc-option__icon">🏗️</span>
+              <strong>Coordination et suivi de chantier</strong>
+              <small></small>
+            </div>
+            <div class="calc-option" data-value="tri">
+              <span class="calc-option__icon">📦</span>
+              <strong>Aide au tri et désencombrement</strong>
+              <small></small>
+            </div>
+            <div class="calc-option" data-value="reorganisation">
+              <span class="calc-option__icon">🏠</span>
+              <strong>Réorganisation des espaces</strong>
+              <small></small>
+            </div>
+            <div class="calc-option" data-value="soutien">
+              <span class="calc-option__icon">🤝</span>
+              <strong>Soutien humain et accompagnement</strong>
+              <small></small>
+            </div>
+            <div class="calc-option" data-value="cle-en-main">
+              <span class="calc-option__icon">🔑</span>
+              <strong>Gestion complète clé en main</strong>
+              <small></small>
+            </div>
+          </div>
+          <div class="quiz-nav">
+            <button class="quiz-nav__back" onclick="quizBack()">&#8592; Retour</button>
+            <button class="btn btn--primary quiz-nav__next" id="step6Next" onclick="quizNextFromMulti()">Continuer &#8594;</button>
+          </div>
+        </div>
+
+        <!-- Step 7: Comment connu -->
+        <div class="calc-step" data-step="7">
+          <h2 class="calc-step__title">Comment nous avez-vous connu ?</h2>
+          <p class="calc-step__desc">Cela nous aide à mieux comprendre nos visiteurs.</p>
+          <div class="calc-options" id="step7Options">
+            <div class="calc-option" data-value="bouche-a-oreille">
+              <span class="calc-option__icon">🗣️</span>
+              <strong>Bouche à oreille</strong>
+              <small></small>
+            </div>
+            <div class="calc-option" data-value="google">
+              <span class="calc-option__icon">🔎</span>
+              <strong>Recherche Google</strong>
+              <small></small>
+            </div>
+            <div class="calc-option" data-value="reseaux-sociaux">
+              <span class="calc-option__icon">📱</span>
+              <strong>Réseaux sociaux</strong>
+              <small></small>
+            </div>
+            <div class="calc-option" data-value="artisan-pro">
+              <span class="calc-option__icon">🔧</span>
+              <strong>Un artisan / professionnel</strong>
+              <small></small>
+            </div>
+            <div class="calc-option" data-value="autre-source">
+              <span class="calc-option__icon">✨</span>
+              <strong>Autre</strong>
+              <small></small>
+            </div>
+          </div>
+          <div class="quiz-nav">
+            <button class="quiz-nav__back" onclick="quizBack()">&#8592; Retour</button>
+          </div>
+        </div>
+
+        <!-- Step 8: Coordonnées -->
+        <div class="calc-step" data-step="8">
+          <h2 class="calc-step__title">Vos coordonnées</h2>
+          <p class="calc-step__desc">Pour recevoir votre recommandation personnalisée, merci de renseigner vos informations.</p>
+          <div class="quiz-form" id="quizForm">
+            <div class="quiz-form__group">
+              <label for="qNom">Nom complet <span class="required">*</span></label>
+              <input type="text" id="qNom" name="nom" required placeholder="Votre nom et prénom" maxlength="100">
+            </div>
+            <div class="quiz-form__group">
+              <label for="qEmail">Email <span class="required">*</span></label>
+              <input type="email" id="qEmail" name="email" required placeholder="votre@email.fr" maxlength="150">
+            </div>
+            <div class="quiz-form__group">
+              <label for="qTel">Téléphone <span class="required">*</span></label>
+              <input type="tel" id="qTel" name="telephone" required placeholder="06 XX XX XX XX" maxlength="20">
+            </div>
+            <div class="quiz-form__group">
+              <label for="qVille">Ville</label>
+              <input type="text" id="qVille" name="ville" placeholder="Votre ville" maxlength="100">
+            </div>
+            <div class="quiz-form__group">
+              <label for="qMessage">Message / Précisions sur votre projet</label>
+              <textarea id="qMessage" name="message" placeholder="Décrivez brièvement votre projet ou vos attentes..." maxlength="1000"></textarea>
+            </div>
+            <div class="quiz-form__consent">
+              <input type="checkbox" id="qConsent" required>
+              <label for="qConsent">J'accepte que mes données soient utilisées pour me recontacter dans le cadre de ma demande.</label>
+            </div>
+            <p class="quiz-form__error" id="formError">Veuillez remplir tous les champs obligatoires et accepter les conditions.</p>
+          </div>
+          <div class="quiz-nav">
+            <button class="quiz-nav__back" onclick="quizBack()">&#8592; Retour</button>
+            <button class="btn btn--primary quiz-nav__next" onclick="quizSubmit()">Recevoir ma recommandation personnalisée &#8594;</button>
+          </div>
+        </div>
+
+        <!-- Loading -->
+        <div class="quiz-loading" id="quizLoading">
+          <div class="quiz-loading__spinner"></div>
+          <p class="quiz-loading__text">Analyse de vos réponses en cours...</p>
+        </div>
+
+        <!-- Result -->
+        <div class="calc-step" data-step="result" style="display:none;" id="quizResultStep">
+          <div class="quiz-result">
+            <div class="quiz-result__badge">Votre recommandation</div>
+            <h2 class="quiz-result__title" id="resTitle"></h2>
+            <p class="quiz-result__desc" id="resDesc"></p>
+            <div class="quiz-result__notice" id="resNotice" style="display:none;"></div>
+            <div class="quiz-result__actions">
+              <a href="reservation.html" class="btn btn--primary">Réserver mon appel découverte gratuit</a>
+              <a href="tel:0617026769" class="btn btn--outline">Appeler directement</a>
+            </div>
+            <p id="resServiceLink" style="margin-top:1rem;"></p>
+            <button class="quiz-result__restart" onclick="quizRestart()">Recommencer le questionnaire</button>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -354,113 +681,427 @@
 
   <script>
     (function() {
-      var answers = [];
-      var currentStep = 0;
-      var questions = document.querySelectorAll('.quiz__question');
-      var dots = document.querySelectorAll('.quiz__dot');
-      var resultEl = document.getElementById('quiz-result');
+      'use strict';
 
-      // Attach click handlers to all options
-      document.querySelectorAll('.quiz__option').forEach(function(option) {
-        option.addEventListener('click', function() {
-          var value = this.getAttribute('data-value');
-          answers[currentStep] = value;
-          if (currentStep < 2) {
-            currentStep++;
-            showStep(currentStep);
+      window.BOOKING_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby4AAupAN5bMDHmowJank4It35Eg_Mbjlryrfqm_m0q_JJlQfjLT67aokKAt-maJ-o8hQ/exec';
+
+      var answers = {};
+      var currentStep = 1;
+      var totalSteps = 8;
+      var stepHistory = [1];
+
+      // Step 2 option sets
+      var step2Travaux = [
+        { value: 'renovation-complete', icon: '🏠', label: 'Rénovation intérieure complète', sub: '' },
+        { value: 'renovation-partielle', icon: '🚿', label: 'Rénovation partielle', sub: 'Cuisine, salle de bain...' },
+        { value: 'construction', icon: '🏗️', label: 'Construction neuve', sub: '' },
+        { value: 'extension', icon: '📐', label: 'Extension / Surélévation', sub: '' },
+        { value: 'rehabilitation', icon: '🔨', label: 'Réhabilitation / Mise aux normes', sub: '' },
+        { value: 'amenagement', icon: '🎨', label: 'Aménagement intérieur', sub: 'Cloisons, décoration' }
+      ];
+      var step2Transition = [
+        { value: 'deces', icon: '🕊️', label: 'Décès d\'un proche / Succession', sub: '' },
+        { value: 'separation', icon: '💔', label: 'Séparation / Divorce', sub: '' },
+        { value: 'nid-vide', icon: '🏠', label: 'Départ des enfants / Nid vide', sub: '' },
+        { value: 'naissance', icon: '👶', label: 'Naissance / Agrandissement de la famille', sub: '' },
+        { value: 'demenagement', icon: '📦', label: 'Déménagement', sub: '' },
+        { value: 'renouveau', icon: '✨', label: 'Besoin de renouveau / Réorganisation', sub: '' }
+      ];
+
+      function updateProgress(step) {
+        var effectiveStep = step;
+        if (step === 'result') effectiveStep = totalSteps + 1;
+        var pct = Math.round((effectiveStep / totalSteps) * 100);
+        if (pct > 100) pct = 100;
+        var bar = document.getElementById('quizProgressBar');
+        var label = document.getElementById('quizProgressLabel');
+        bar.style.width = pct + '%';
+        if (step === 'result') {
+          label.textContent = 'Terminé !';
+        } else {
+          label.textContent = 'Étape ' + step + ' sur ' + totalSteps;
+        }
+      }
+
+      function showStep(step) {
+        var allSteps = document.querySelectorAll('.calc-step');
+        var loading = document.getElementById('quizLoading');
+        loading.classList.remove('visible');
+        allSteps.forEach(function(s) {
+          s.classList.remove('active');
+          s.style.display = '';
+        });
+        if (step === 'result') {
+          var resultStep = document.getElementById('quizResultStep');
+          resultStep.style.display = 'block';
+          resultStep.classList.add('active');
+        } else {
+          var target = document.querySelector('.calc-step[data-step="' + step + '"]');
+          if (target) {
+            target.classList.add('active');
+          }
+        }
+        updateProgress(step);
+        // Scroll to top of quiz
+        var calc = document.getElementById('quizCalc');
+        if (calc) {
+          calc.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+
+      function goToStep(step) {
+        currentStep = step;
+        if (stepHistory[stepHistory.length - 1] !== step) {
+          stepHistory.push(step);
+        }
+        showStep(step);
+      }
+
+      // Build step 2 options dynamically
+      function buildStep2(situation) {
+        var container = document.getElementById('step2Options');
+        var title = document.getElementById('step2Title');
+        var desc = document.getElementById('step2Desc');
+        container.innerHTML = '';
+
+        var opts;
+        if (situation === 'travaux' || situation === 'pro') {
+          title.textContent = 'Quel type de projet ?';
+          desc.textContent = 'Précisez la nature de votre projet.';
+          opts = step2Travaux;
+        } else if (situation === 'transition') {
+          title.textContent = 'Quelle transition vivez-vous ?';
+          desc.textContent = 'Sélectionnez la situation qui vous correspond.';
+          opts = step2Transition;
+        } else {
+          return false; // skip
+        }
+
+        opts.forEach(function(o) {
+          var div = document.createElement('div');
+          div.className = 'calc-option';
+          div.setAttribute('data-value', o.value);
+          div.innerHTML = '<span class="calc-option__icon">' + o.icon + '</span><strong>' + o.label + '</strong><small>' + o.sub + '</small>';
+          div.addEventListener('click', function() {
+            answers.typeProjet = this.getAttribute('data-value');
+            goToStep(3);
+          });
+          container.appendChild(div);
+        });
+        return true;
+      }
+
+      // Step 1 click handlers
+      document.querySelectorAll('#step1Options .calc-option').forEach(function(opt) {
+        opt.addEventListener('click', function() {
+          answers.situation = this.getAttribute('data-value');
+          var hasStep2 = buildStep2(answers.situation);
+          if (hasStep2) {
+            goToStep(2);
           } else {
-            showResult();
+            // Skip step 2 for "indecis"
+            answers.typeProjet = 'non-defini';
+            goToStep(3);
           }
         });
       });
 
-      function showStep(step) {
-        questions.forEach(function(q, i) {
-          q.classList.toggle('quiz__question--active', i === step);
+      // Step 3 click handlers
+      document.querySelectorAll('#step3Options .calc-option').forEach(function(opt) {
+        opt.addEventListener('click', function() {
+          answers.urgence = this.getAttribute('data-value');
+          goToStep(4);
         });
-        dots.forEach(function(d, i) {
-          d.classList.remove('quiz__dot--active', 'quiz__dot--done');
-          if (i < step) d.classList.add('quiz__dot--done');
-          if (i === step) d.classList.add('quiz__dot--active');
+      });
+
+      // Step 4 click handlers
+      document.querySelectorAll('#step4Options .calc-option').forEach(function(opt) {
+        opt.addEventListener('click', function() {
+          answers.budget = this.getAttribute('data-value');
+          goToStep(5);
         });
-        resultEl.classList.remove('quiz__result--active');
-      }
+      });
 
-      function showResult() {
-        questions.forEach(function(q) {
-          q.classList.remove('quiz__question--active');
+      // Step 5: Localisation
+      document.querySelectorAll('#step5Options .calc-option').forEach(function(opt) {
+        opt.addEventListener('click', function() {
+          // Remove previous selection
+          document.querySelectorAll('#step5Options .calc-option').forEach(function(o) {
+            o.classList.remove('selected');
+          });
+          this.classList.add('selected');
+          var val = this.getAttribute('data-value');
+          answers.localisation = val;
+          var villeInput = document.getElementById('villeInput');
+          var nextBtn = document.getElementById('step5Next');
+          if (val === 'limitrophe' || val === 'autre-lieu') {
+            villeInput.classList.add('visible');
+            nextBtn.style.display = 'inline-flex';
+          } else {
+            villeInput.classList.remove('visible');
+            answers.villePrecision = '';
+            goToStep(6);
+          }
         });
-        dots.forEach(function(d) {
-          d.classList.remove('quiz__dot--active');
-          d.classList.add('quiz__dot--done');
+      });
+
+      window.quizNextFromStep5 = function() {
+        answers.villePrecision = document.getElementById('villeField').value.trim();
+        goToStep(6);
+      };
+
+      // Step 6: Multi-select
+      var multiSelections = [];
+      document.querySelectorAll('#step6Options .calc-option').forEach(function(opt) {
+        opt.addEventListener('click', function() {
+          var val = this.getAttribute('data-value');
+          var idx = multiSelections.indexOf(val);
+          if (idx > -1) {
+            multiSelections.splice(idx, 1);
+            this.classList.remove('selected');
+          } else {
+            multiSelections.push(val);
+            this.classList.add('selected');
+          }
         });
+      });
 
-        var situation = answers[0];
-        var avancement = answers[1];
-        var besoin = answers[2];
+      window.quizNextFromMulti = function() {
+        answers.besoins = multiSelections.slice();
+        goToStep(7);
+      };
 
-        var result = getResult(situation, avancement, besoin);
+      // Step 7: Comment connu
+      document.querySelectorAll('#step7Options .calc-option').forEach(function(opt) {
+        opt.addEventListener('click', function() {
+          answers.source = this.getAttribute('data-value');
+          goToStep(8);
+        });
+      });
 
-        document.getElementById('result-icon').textContent = result.icon;
-        document.getElementById('result-title').textContent = result.title;
-        document.getElementById('result-desc').textContent = result.desc;
-        document.getElementById('result-actions').innerHTML =
-          '<a href="' + result.serviceLink + '" class="btn btn--primary">Découvrir ce service</a>' +
-          '<a href="reservation.html" class="btn btn--outline">Réserver mon appel</a>';
+      // Back navigation
+      window.quizBack = function() {
+        if (stepHistory.length > 1) {
+          stepHistory.pop();
+          var prev = stepHistory[stepHistory.length - 1];
+          currentStep = prev;
+          showStep(prev);
+        }
+      };
 
-        resultEl.classList.add('quiz__result--active');
-      }
+      // Submit
+      window.quizSubmit = function() {
+        var nom = document.getElementById('qNom').value.trim();
+        var email = document.getElementById('qEmail').value.trim();
+        var tel = document.getElementById('qTel').value.trim();
+        var ville = document.getElementById('qVille').value.trim();
+        var message = document.getElementById('qMessage').value.trim();
+        var consent = document.getElementById('qConsent').checked;
+        var errEl = document.getElementById('formError');
 
-      function getResult(situation, avancement, besoin) {
-        // If travaux + urgent + gérer → Suivi complet travaux
-        if ((situation === 'travaux' || situation === 'les-deux') && avancement === 'urgent' && besoin === 'gerer') {
+        if (!nom || !email || !tel || !consent) {
+          errEl.classList.add('visible');
+          return;
+        }
+        // Basic email validation
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          errEl.textContent = 'Veuillez saisir une adresse email valide.';
+          errEl.classList.add('visible');
+          return;
+        }
+        errEl.classList.remove('visible');
+
+        answers.nom = nom;
+        answers.email = email;
+        answers.telephone = tel;
+        answers.ville = ville;
+        answers.message = message;
+
+        // Show loading
+        document.querySelectorAll('.calc-step').forEach(function(s) {
+          s.classList.remove('active');
+          s.style.display = '';
+        });
+        document.getElementById('quizLoading').classList.add('visible');
+
+        // Compute result
+        var result = computeResult();
+
+        // Send to Google Apps Script
+        var payload = {
+          action: 'quiz',
+          situation: answers.situation || '',
+          typeProjet: answers.typeProjet || '',
+          urgence: answers.urgence || '',
+          budget: answers.budget || '',
+          localisation: answers.localisation || '',
+          villePrecision: answers.villePrecision || '',
+          besoins: (answers.besoins || []).join(', '),
+          source: answers.source || '',
+          name: answers.nom,
+          email: answers.email,
+          phone: answers.telephone,
+          ville: answers.ville,
+          message: answers.message,
+          recommandation: result.title
+        };
+
+        var emailSent = true;
+        fetch(window.BOOKING_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        }).catch(function() {
+          emailSent = false;
+        }).finally(function() {
+          setTimeout(function() {
+            showResult(result, emailSent);
+          }, 1500);
+        });
+      };
+
+      function computeResult() {
+        var sit = answers.situation;
+        var type = answers.typeProjet;
+        var urg = answers.urgence;
+        var bud = answers.budget;
+        var besoins = answers.besoins || [];
+
+        // Transition de vie
+        if (sit === 'transition') {
+          if (besoins.indexOf('tri') > -1 || besoins.indexOf('reorganisation') > -1) {
+            return {
+              title: 'Accompagnement Transition de Vie',
+              desc: 'Votre situation appelle un accompagnement humain et concret. Nous vous aidons à traverser cette étape en prenant en charge le tri, le désencombrement et la réorganisation de votre espace de vie. Chaque transition mérite un soutien bienveillant et professionnel.',
+              serviceLink: 'services-transition.html',
+              serviceName: 'Découvrir l\'accompagnement transition'
+            };
+          }
           return {
-            icon: '🏗️',
-            title: 'Suivi complet travaux',
-            desc: 'Vous avez besoin d\'un accompagnement complet pour gérer vos travaux de A à Z. Notre formule Suivi complet est faite pour vous : coordination des artisans, suivi de chantier, réception des travaux.',
-            serviceLink: 'services-travaux.html'
+            title: 'Accompagnement Transition de Vie',
+            desc: 'Vous traversez une période de changement et méritez un accompagnement sur mesure. Nous vous proposons un soutien à la fois humain et pratique pour vous aider à retrouver sérénité et organisation dans votre quotidien.',
+            serviceLink: 'services-transition.html',
+            serviceName: 'Découvrir l\'accompagnement transition'
           };
         }
-        // If transition + any → Accompagnement transition
-        if (situation === 'transition') {
+
+        // Professionnel du bâtiment
+        if (sit === 'pro') {
           return {
-            icon: '🌱',
-            title: 'Accompagnement transition',
-            desc: 'Vous traversez une période de changement et avez besoin d\'un soutien humain et concret. Notre accompagnement transition de vie vous aide à chaque étape : tri, désencombrement, réorganisation.',
-            serviceLink: 'services-transition.html'
+            title: 'Renfort Chantier pour Professionnels',
+            desc: 'En tant que professionnel, vous avez besoin d\'un appui fiable pour la coordination, le suivi administratif ou la gestion de chantier. Stella\'Concept peut intervenir en renfort sur vos projets pour vous permettre de vous concentrer sur votre métier.',
+            serviceLink: 'services-travaux.html',
+            serviceName: 'Découvrir l\'accompagnement travaux'
           };
         }
-        // If réfléchis + conseils → Séance conseil
-        if (avancement === 'reflechis' && besoin === 'conseils') {
+
+        // Travaux - clé en main ou gestion complète
+        if (besoins.indexOf('cle-en-main') > -1 || (besoins.indexOf('coordination') > -1 && besoins.indexOf('administratif') > -1)) {
           return {
-            icon: '💡',
-            title: 'Séance conseil',
-            desc: 'Vous êtes au début de votre réflexion et cherchez des conseils éclairés. Une séance conseil vous permettra d\'y voir plus clair, de définir vos priorités et de repartir avec un plan d\'action concret.',
-            serviceLink: 'tarifs.html'
+            title: 'Suivi Complet de Travaux',
+            desc: 'Vous recherchez une prise en charge complète de votre projet. Notre formule Suivi Complet inclut la coordination des artisans, le suivi de chantier, la gestion administrative et la réception des travaux. Vous n\'avez plus qu\'à profiter du résultat.',
+            serviceLink: 'services-travaux.html',
+            serviceName: 'Découvrir le suivi complet'
           };
         }
-        // Default → Accompagnement sur-mesure
+
+        // Travaux - urgent et gros budget
+        if (sit === 'travaux' && urg === 'urgent' && (bud === '30k-80k' || bud === 'plus80k')) {
+          return {
+            title: 'Suivi Complet de Travaux',
+            desc: 'L\'urgence de votre projet et son ampleur nécessitent un accompagnement global. Notre formule Suivi Complet vous garantit une gestion rigoureuse de A à Z, avec coordination des artisans et suivi de chantier quotidien.',
+            serviceLink: 'services-travaux.html',
+            serviceName: 'Découvrir le suivi complet'
+          };
+        }
+
+        // Travaux - conseils seulement
+        if (besoins.length === 1 && besoins[0] === 'conseils') {
+          return {
+            title: 'Séance Conseil Personnalisée',
+            desc: 'Vous êtes au début de votre réflexion et cherchez des conseils avisés. Une séance conseil vous permettra d\'y voir plus clair, de définir vos priorités et de repartir avec un plan d\'action concret adapté à votre situation.',
+            serviceLink: 'services-travaux.html',
+            serviceName: 'Découvrir nos services'
+          };
+        }
+
+        // Travaux - recherche artisans
+        if (besoins.indexOf('artisans') > -1) {
+          return {
+            title: 'Accompagnement Recherche d\'Artisans',
+            desc: 'Trouver des artisans fiables est souvent la difficulté principale d\'un projet de travaux. Nous mettons à votre disposition notre réseau de professionnels qualifiés et de confiance, et nous vous accompagnons dans le choix et la mise en concurrence des devis.',
+            serviceLink: 'services-travaux.html',
+            serviceName: 'Découvrir l\'accompagnement travaux'
+          };
+        }
+
+        // Indécis
+        if (sit === 'indecis') {
+          return {
+            title: 'Séance Découverte Gratuite',
+            desc: 'Pas de souci si vous ne savez pas encore exactement ce dont vous avez besoin ! Nous vous proposons un premier échange gratuit et sans engagement pour comprendre votre situation et vous orienter vers la solution la plus adaptée.',
+            serviceLink: 'contact.html',
+            serviceName: 'Nous contacter'
+          };
+        }
+
+        // Default
         return {
-          icon: '✨',
-          title: 'Accompagnement sur-mesure',
-          desc: 'Votre situation est unique et mérite une réponse personnalisée. Contactez-nous pour un premier échange gratuit : nous construirons ensemble la formule qui vous correspond parfaitement.',
-          serviceLink: 'contact.html'
+          title: 'Accompagnement Sur-Mesure',
+          desc: 'Votre projet est unique et mérite une réponse personnalisée. Après analyse de vos réponses, nous vous recommandons un accompagnement sur-mesure qui combine nos différentes expertises pour répondre précisément à vos besoins.',
+          serviceLink: 'services-travaux.html',
+          serviceName: 'Découvrir nos services'
         };
       }
 
-      // Expose back and restart functions globally
-      window.quizBack = function() {
-        if (currentStep > 0) {
-          currentStep--;
-          showStep(currentStep);
+      function showResult(result, emailSent) {
+        document.getElementById('resTitle').textContent = result.title;
+        document.getElementById('resDesc').textContent = result.desc;
+        var notice = document.getElementById('resNotice');
+        if (emailSent) {
+          notice.style.display = 'block';
+          notice.textContent = 'Nous avons bien reçu vos réponses ! Estelle vous recontactera sous 24h avec une recommandation détaillée.';
+        } else {
+          notice.style.display = 'block';
+          notice.textContent = 'Nous avons bien noté vos réponses et vous recontacterons sous 24h.';
         }
+        var serviceLink = document.getElementById('resServiceLink');
+        serviceLink.innerHTML = '<a href="' + result.serviceLink + '" style="color:var(--accent);text-decoration:underline;font-weight:500;">' + result.serviceName + '</a>';
+
+        showStep('result');
+      }
+
+      // Restart
+      window.quizRestart = function() {
+        answers = {};
+        multiSelections = [];
+        currentStep = 1;
+        stepHistory = [1];
+        // Reset multi-select UI
+        document.querySelectorAll('#step6Options .calc-option').forEach(function(o) {
+          o.classList.remove('selected');
+        });
+        document.querySelectorAll('#step5Options .calc-option').forEach(function(o) {
+          o.classList.remove('selected');
+        });
+        document.getElementById('villeInput').classList.remove('visible');
+        document.getElementById('step5Next').style.display = 'none';
+        document.getElementById('villeField').value = '';
+        document.getElementById('formError').classList.remove('visible');
+        document.getElementById('qNom').value = '';
+        document.getElementById('qEmail').value = '';
+        document.getElementById('qTel').value = '';
+        document.getElementById('qVille').value = '';
+        document.getElementById('qMessage').value = '';
+        document.getElementById('qConsent').checked = false;
+        document.getElementById('quizResultStep').style.display = 'none';
+        showStep(1);
       };
 
-      window.quizRestart = function() {
-        answers = [];
-        currentStep = 0;
-        showStep(0);
-      };
+      // Initialize
+      showStep(1);
+
     })();
   </script>
 </body>
