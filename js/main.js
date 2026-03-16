@@ -2,6 +2,18 @@
    STELLA CONCEPT - Main JS
    ============================================= */
 
+// --- Preloader ---
+(function() {
+  const preloader = document.createElement('div');
+  preloader.className = 'preloader';
+  preloader.innerHTML = '<div class="preloader__content"><img src="img/logotype_primaire.svg" alt="" class="preloader__logo"><div class="preloader__bar"><div class="preloader__fill"></div></div></div>';
+  document.body.appendChild(preloader);
+  window.addEventListener('load', () => {
+    preloader.classList.add('preloader--hide');
+    setTimeout(() => preloader.remove(), 600);
+  });
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
   // --- Navigation sticky ---
   const nav = document.querySelector('.nav');
@@ -211,5 +223,46 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- PWA Service Worker ---
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/sw.js').catch(() => {});
+  }
+
+  // --- Scroll Progress Bar ---
+  const progressBar = document.createElement('div');
+  progressBar.className = 'scroll-progress';
+  document.body.appendChild(progressBar);
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    progressBar.style.width = progress + '%';
+  }, { passive: true });
+
+  // --- Back to Top Button ---
+  const backToTop = document.createElement('button');
+  backToTop.className = 'back-to-top';
+  backToTop.setAttribute('aria-label', 'Retour en haut');
+  backToTop.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>';
+  document.body.appendChild(backToTop);
+  window.addEventListener('scroll', () => {
+    backToTop.classList.toggle('visible', window.scrollY > 500);
+  }, { passive: true });
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // --- Sticky Mobile CTA ---
+  if (window.innerWidth <= 768) {
+    const stickyCta = document.createElement('div');
+    stickyCta.className = 'sticky-cta';
+    stickyCta.innerHTML = `
+      <a href="reservation.html" class="btn btn--cta">Réserver un créneau</a>
+      <a href="tel:0617026769" class="btn btn--phone">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Appeler
+      </a>
+    `;
+    document.body.appendChild(stickyCta);
+    window.addEventListener('scroll', () => {
+      stickyCta.classList.toggle('visible', window.scrollY > 600);
+    }, { passive: true });
   }
 });
