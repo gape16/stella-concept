@@ -151,24 +151,26 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --- Dark Mode Toggle ---
+  const moonSVG = '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>';
+  const sunSVG = '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>';
+
   const darkToggle = document.createElement('button');
   darkToggle.className = 'dark-toggle';
   darkToggle.setAttribute('aria-label', 'Basculer le mode sombre');
-  darkToggle.innerHTML = '<i data-lucide="moon"></i>';
+  darkToggle.innerHTML = moonSVG;
   document.body.appendChild(darkToggle);
 
   const savedTheme = localStorage.getItem('theme');
   if (savedTheme === 'dark') {
     document.body.classList.add('dark');
-    darkToggle.innerHTML = '<i data-lucide="sun"></i>';
+    darkToggle.innerHTML = sunSVG;
   }
 
   darkToggle.addEventListener('click', () => {
     document.body.classList.toggle('dark');
     const isDark = document.body.classList.contains('dark');
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    darkToggle.innerHTML = isDark ? '<i data-lucide="sun"></i>' : '<i data-lucide="moon"></i>';
-    if (typeof lucide !== 'undefined') lucide.createIcons();
+    darkToggle.innerHTML = isDark ? sunSVG : moonSVG;
   });
 
   // --- WhatsApp Floating Button ---
