@@ -360,45 +360,126 @@ p {
   line-height: 1.7;
 }
 
-/* Card large (poles expertise) */
-.card--large {
-  padding: var(--space-lg) var(--space-md);
-  text-align: center;
+/* Pole cards (2 blocs expertise accueil) */
+.pole-card {
   position: relative;
-  overflow: hidden;
-  border-top: 5px solid var(--accent);
   border-radius: var(--radius-lg);
-  background: var(--color-white);
+  overflow: hidden;
+  min-height: 420px;
+  display: flex;
+  align-items: flex-end;
+  transition: all 0.5s ease;
+  cursor: pointer;
 }
 
-.card--large:hover {
-  border-top-color: var(--color-magenta);
+.pole-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
 }
 
-.card--large .card__icon {
-  width: 90px;
-  height: 90px;
-  margin: 0 auto var(--space-md);
-  border-radius: var(--radius-full);
-  background: linear-gradient(135deg, rgba(192, 66, 138, 0.1), rgba(241, 152, 13, 0.1));
+.pole-card__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.6s ease;
 }
 
-.card--large .card__icon i {
-  width: 40px;
-  height: 40px;
+.pole-card:hover .pole-card__bg {
+  transform: scale(1.08);
 }
 
-.card--large .card__title {
-  font-size: 1.4rem;
+.pole-card__overlay {
+  position: absolute;
+  inset: 0;
+  transition: background 0.4s ease;
+}
+
+.pole-card--travaux .pole-card__overlay {
+  background: linear-gradient(to top, rgba(241, 152, 13, 0.92) 0%, rgba(84, 73, 87, 0.7) 50%, rgba(84, 73, 87, 0.3) 100%);
+}
+
+.pole-card--transition .pole-card__overlay {
+  background: linear-gradient(to top, rgba(192, 66, 138, 0.92) 0%, rgba(84, 73, 87, 0.7) 50%, rgba(84, 73, 87, 0.3) 100%);
+}
+
+.pole-card__content {
+  position: relative;
+  z-index: 2;
+  padding: var(--space-md);
+  width: 100%;
+  color: #fff;
+}
+
+.pole-card__icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-sm);
+  color: #fff;
+}
+
+.pole-card__icon i {
+  width: 28px;
+  height: 28px;
+}
+
+.pole-card__title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #fff;
   margin-bottom: var(--space-sm);
 }
 
-.card--large .card__text {
-  font-size: 1rem;
-  line-height: 1.7;
-  color: var(--color-gray);
-  max-width: 380px;
-  margin: 0 auto;
+.pole-card__list {
+  list-style: none;
+  margin-bottom: var(--space-md);
+}
+
+.pole-card__list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 0;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.92);
+  font-family: var(--font-heading);
+  font-weight: 400;
+}
+
+.pole-card__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #fff;
+  padding: 0.7rem 1.6rem;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.pole-card:hover .pole-card__btn {
+  background: #fff;
+  border-color: #fff;
+  color: var(--color-primary);
+}
+
+/* Responsive pole cards */
+@media (max-width: 768px) {
+  .pole-card {
+    min-height: 350px;
+  }
 }
 
 /* --- Badge --- */
