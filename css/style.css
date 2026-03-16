@@ -593,10 +593,11 @@ p {
 }
 
 /* Nav CTA Button */
+.nav__links .btn--nav-cta,
 .btn--nav-cta {
   background: linear-gradient(135deg, var(--color-magenta), var(--color-orange));
   color: #fff !important;
-  padding: 0.65rem 1.8rem;
+  padding: 0.65rem 1.8rem !important;
   border-radius: 50px;
   font-family: var(--font-heading);
   font-size: 0.85rem;

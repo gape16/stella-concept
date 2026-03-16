@@ -226,18 +226,7 @@ body {
   opacity: 1;
 }
 
-/* --- Nav link active dot --- */
-.nav__links a.active::before {
-  content: '';
-  position: absolute;
-  bottom: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--accent);
-}
+/* --- Nav link active dot --- (désactivé) */
 
 /* --- Floating animation for WhatsApp --- */
 @keyframes float {
