@@ -793,7 +793,7 @@ body.dark .atout-item__text {
   left: 0;
   right: 0;
   z-index: 1000;
-  padding: 1.2rem 0;
+  padding: 0.7rem 0;
   transition: all var(--transition);
   background: transparent;
 }
@@ -801,7 +801,7 @@ body.dark .atout-item__text {
 .nav--scrolled {
   background: rgba(255, 255, 255, 0.97);
   box-shadow: 0 2px 20px rgba(84, 73, 87, 0.1);
-  padding: 0.6rem 0;
+  padding: 0.25rem 0;
   backdrop-filter: blur(12px);
 }
 
@@ -834,13 +834,13 @@ body.dark .atout-item__text {
 }
 
 .nav__logo-img {
-  height: 52px;
+  height: 68px;
   width: auto;
   transition: all var(--transition);
 }
 
 .nav--scrolled .nav__logo-img {
-  height: 42px;
+  height: 54px;
 }
 
 .nav__logo-stella {
@@ -3888,11 +3888,11 @@ body.dark .calc-range-value {
   }
 
   .nav__logo-img {
-    height: 40px;
+    height: 52px;
   }
 
   .nav--scrolled .nav__logo-img {
-    height: 34px;
+    height: 44px;
   }
 
   .timeline::before {
