@@ -85,19 +85,34 @@ document.addEventListener('DOMContentLoaded', () => {
     const header = item.querySelector('.accordion__header');
     const body = item.querySelector('.accordion__body');
 
+    // Associer body à header pour l'accessibilité
+    if (body && !body.id) {
+      body.id = 'acc-body-' + Math.random().toString(36).slice(2, 8);
+    }
+    if (body && header) {
+      header.setAttribute('aria-controls', body.id);
+      body.setAttribute('role', 'region');
+    }
+
     header.addEventListener('click', () => {
       const isActive = item.classList.contains('active');
 
       // Fermer tous les autres
       accordionItems.forEach(other => {
         other.classList.remove('active');
-        other.querySelector('.accordion__body').style.maxHeight = null;
+        const otherBody = other.querySelector('.accordion__body');
+        const otherHeader = other.querySelector('.accordion__header');
+        if (otherBody) otherBody.style.maxHeight = null;
+        if (otherHeader) otherHeader.setAttribute('aria-expanded', 'false');
       });
 
       // Toggle actuel
       if (!isActive) {
         item.classList.add('active');
         body.style.maxHeight = body.scrollHeight + 'px';
+        header.setAttribute('aria-expanded', 'true');
+      } else {
+        header.setAttribute('aria-expanded', 'false');
       }
     });
   });

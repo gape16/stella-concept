@@ -3,10 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Calculateur de budget travaux - Stella'Concept | Estimation gratuite</title>
+  <meta name="robots" content="index, follow">
+  <title>Calculateur budget travaux Charente | Stella'Concept</title>
   <meta name="description" content="Estimez précisément le budget de vos travaux de rénovation ou construction. Calculateur interactif avec données réelles par région, type de bien et postes de travaux.">
   <meta property="og:title" content="Calculateur de budget travaux - Stella'Concept">
   <meta property="og:description" content="Estimez votre budget travaux en ligne gratuitement avec notre simulateur professionnel.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://stella-concept.fr/calculateur.html">
+  <meta property="og:site_name" content="Stella'Concept">
+  <meta property="og:locale" content="fr_FR">
   <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#544957">
@@ -18,7 +23,9 @@
   <link rel="stylesheet" href="css/animations.css">
   <style>:root { --accent: #F1980D; }</style>
   <link rel="canonical" href="https://stella-concept.fr/calculateur.html">
-  <meta property="og:image" content="https://stella-concept.fr/img/og-image.png">
+  <meta property="og:image" content="https://stella-concept.fr/img/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@stellaconcept">
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://stella-concept.fr/"},{"@type":"ListItem","position":2,"name":"Calculateur de budget","item":"https://stella-concept.fr/calculateur.html"}]}
   </script>
@@ -29,7 +36,7 @@
   <nav class="nav" aria-label="Navigation principale">
     <div class="container nav__inner">
       <a href="index.html" class="nav__logo" aria-label="Stella'Concept - Accueil">
-        <img src="img/logotype_secondaire.svg" alt="Stella'Concept" class="nav__logo-img">
+        <img src="img/logotype_primaire.png" alt="Stella'Concept" class="nav__logo-img">
       </a>
       <div class="nav__links" role="menubar">
         <a href="index.html" role="menuitem">Accueil</a>
@@ -77,22 +84,22 @@
           <p class="calc-step__desc">Sélectionnez le type de propriété concernée par vos travaux.</p>
           <div class="calc-options">
             <div class="calc-option" data-value="maison">
-              <span class="calc-option__icon">🏡</span>
+              <span class="calc-option__icon" aria-hidden="true">🏡</span>
               <strong>Maison individuelle</strong>
               <small>Pavillon, maison de ville, longère...</small>
             </div>
             <div class="calc-option" data-value="appartement">
-              <span class="calc-option__icon">🏢</span>
+              <span class="calc-option__icon" aria-hidden="true">🏢</span>
               <strong>Appartement</strong>
               <small>Studio, T2, T3, T4+...</small>
             </div>
             <div class="calc-option" data-value="local_pro">
-              <span class="calc-option__icon">🏪</span>
+              <span class="calc-option__icon" aria-hidden="true">🏪</span>
               <strong>Local professionnel</strong>
               <small>Bureau, commerce, atelier...</small>
             </div>
             <div class="calc-option" data-value="dependance">
-              <span class="calc-option__icon">🏚️</span>
+              <span class="calc-option__icon" aria-hidden="true">🏚️</span>
               <strong>Dépendance / Annexe</strong>
               <small>Grange, garage, extension...</small>
             </div>
@@ -105,22 +112,22 @@
           <p class="calc-step__desc">Décrivez le type d'intervention souhaitée.</p>
           <div class="calc-options">
             <div class="calc-option" data-value="rafraichissement">
-              <span class="calc-option__icon">🎨</span>
+              <span class="calc-option__icon" aria-hidden="true">🎨</span>
               <strong>Rafraîchissement</strong>
               <small>Peinture, sols, petits travaux esthétiques</small>
             </div>
             <div class="calc-option" data-value="renovation_partielle">
-              <span class="calc-option__icon">🔧</span>
+              <span class="calc-option__icon" aria-hidden="true">🔧</span>
               <strong>Rénovation partielle</strong>
               <small>Cuisine, salle de bain, une ou deux pièces</small>
             </div>
             <div class="calc-option" data-value="renovation_complete">
-              <span class="calc-option__icon">🔨</span>
+              <span class="calc-option__icon" aria-hidden="true">🔨</span>
               <strong>Rénovation complète</strong>
               <small>Tout refaire : électricité, plomberie, sols, murs</small>
             </div>
             <div class="calc-option" data-value="renovation_lourde">
-              <span class="calc-option__icon">🏗️</span>
+              <span class="calc-option__icon" aria-hidden="true">🏗️</span>
               <strong>Rénovation lourde / Réhabilitation</strong>
               <small>Structure, toiture, planchers, mise aux normes</small>
             </div>
@@ -145,22 +152,22 @@
           <p class="calc-step__desc">L'ancienneté impacte la complexité et le coût des travaux.</p>
           <div class="calc-options">
             <div class="calc-option" data-value="avant_1950">
-              <span class="calc-option__icon">🏛️</span>
+              <span class="calc-option__icon" aria-hidden="true">🏛️</span>
               <strong>Avant 1950</strong>
               <small>Murs épais, matériaux anciens, charme à préserver</small>
             </div>
             <div class="calc-option" data-value="1950_1990">
-              <span class="calc-option__icon">🏠</span>
+              <span class="calc-option__icon" aria-hidden="true">🏠</span>
               <strong>1950 - 1990</strong>
               <small>Béton, parpaing, mises aux normes fréquentes</small>
             </div>
             <div class="calc-option" data-value="1990_2010">
-              <span class="calc-option__icon">🏘️</span>
+              <span class="calc-option__icon" aria-hidden="true">🏘️</span>
               <strong>1990 - 2010</strong>
               <small>Construction récente, normes plus actuelles</small>
             </div>
             <div class="calc-option" data-value="apres_2010">
-              <span class="calc-option__icon">🏗️</span>
+              <span class="calc-option__icon" aria-hidden="true">🏗️</span>
               <strong>Après 2010</strong>
               <small>RT 2012+, matériaux modernes</small>
             </div>
@@ -169,29 +176,32 @@
 
         <!-- Étape 5 : Localisation -->
         <div class="calc-step" data-step="5">
-          <h2 class="calc-step__title">Localisation du bien ?</h2>
-          <p class="calc-step__desc">Les prix varient significativement selon la région.</p>
-          <div class="calc-options">
-            <div class="calc-option" data-value="paris_idf">
-              <span class="calc-option__icon">🗼</span>
-              <strong>Paris / Île-de-France</strong>
-              <small>Coûts les plus élevés de France</small>
-            </div>
-            <div class="calc-option" data-value="grande_metropole">
-              <span class="calc-option__icon">🏙️</span>
-              <strong>Grande métropole</strong>
-              <small>Lyon, Bordeaux, Nantes, Toulouse, Marseille...</small>
-            </div>
-            <div class="calc-option" data-value="ville_moyenne">
-              <span class="calc-option__icon">🏘️</span>
-              <strong>Ville moyenne / Province</strong>
-              <small>Angoulême, La Rochelle, Poitiers, Limoges...</small>
-            </div>
-            <div class="calc-option" data-value="rural">
-              <span class="calc-option__icon">🌾</span>
-              <strong>Zone rurale</strong>
-              <small>Campagne, village, hameau</small>
-            </div>
+          <h2 class="calc-step__title">Où se situe le bien ?</h2>
+          <p class="calc-step__desc">J'interviens en Charente et dans les départements limitrophes (16, 17, 24, 79, 86, 87).</p>
+          <div class="calc-location">
+            <label class="calc-location__label" for="calcCommune">Commune ou code postal</label>
+            <input type="text" id="calcCommune" class="calc-location__input" placeholder="Ex : Angoulême ou 16000" autocomplete="address-level2" list="calc-communes" maxlength="80">
+            <datalist id="calc-communes">
+              <option value="Angoulême"></option>
+              <option value="Cognac"></option>
+              <option value="Soyaux"></option>
+              <option value="La Couronne"></option>
+              <option value="Ruffec"></option>
+              <option value="Barbezieux-Saint-Hilaire"></option>
+              <option value="Saint-Yrieix-sur-Charente"></option>
+              <option value="Châteauneuf-sur-Charente"></option>
+              <option value="Confolens"></option>
+              <option value="La Rochefoucauld"></option>
+              <option value="La Rochelle"></option>
+              <option value="Saintes"></option>
+              <option value="Rochefort"></option>
+              <option value="Royan"></option>
+              <option value="Périgueux"></option>
+              <option value="Poitiers"></option>
+              <option value="Niort"></option>
+              <option value="Limoges"></option>
+            </datalist>
+            <p class="calc-location__hint">Votre commune, votre code postal ou un lieu-dit proche — je complète avec vous si besoin.</p>
           </div>
         </div>
 
@@ -201,51 +211,51 @@
           <p class="calc-step__desc">Sélectionnez tous les postes concernés (plusieurs choix possibles).</p>
           <div class="calc-options calc-options--multi">
             <div class="calc-option calc-option--toggle" data-value="electricite">
-              <span class="calc-option__icon">⚡</span>
+              <span class="calc-option__icon" aria-hidden="true">⚡</span>
               <strong>Électricité</strong>
             </div>
             <div class="calc-option calc-option--toggle" data-value="plomberie">
-              <span class="calc-option__icon">🚿</span>
+              <span class="calc-option__icon" aria-hidden="true">🚿</span>
               <strong>Plomberie</strong>
             </div>
             <div class="calc-option calc-option--toggle" data-value="cuisine">
-              <span class="calc-option__icon">🍳</span>
+              <span class="calc-option__icon" aria-hidden="true">🍳</span>
               <strong>Cuisine</strong>
             </div>
             <div class="calc-option calc-option--toggle" data-value="sdb">
-              <span class="calc-option__icon">🛁</span>
+              <span class="calc-option__icon" aria-hidden="true">🛁</span>
               <strong>Salle de bain</strong>
             </div>
             <div class="calc-option calc-option--toggle" data-value="peinture">
-              <span class="calc-option__icon">🎨</span>
+              <span class="calc-option__icon" aria-hidden="true">🎨</span>
               <strong>Peinture / Murs</strong>
             </div>
             <div class="calc-option calc-option--toggle" data-value="sols">
-              <span class="calc-option__icon">🪵</span>
+              <span class="calc-option__icon" aria-hidden="true">🪵</span>
               <strong>Revêtement sols</strong>
             </div>
             <div class="calc-option calc-option--toggle" data-value="isolation">
-              <span class="calc-option__icon">🧱</span>
+              <span class="calc-option__icon" aria-hidden="true">🧱</span>
               <strong>Isolation</strong>
             </div>
             <div class="calc-option calc-option--toggle" data-value="menuiserie">
-              <span class="calc-option__icon">🪟</span>
+              <span class="calc-option__icon" aria-hidden="true">🪟</span>
               <strong>Menuiseries / Fenêtres</strong>
             </div>
             <div class="calc-option calc-option--toggle" data-value="toiture">
-              <span class="calc-option__icon">🏠</span>
+              <span class="calc-option__icon" aria-hidden="true">🏠</span>
               <strong>Toiture / Charpente</strong>
             </div>
             <div class="calc-option calc-option--toggle" data-value="facade">
-              <span class="calc-option__icon">🧹</span>
+              <span class="calc-option__icon" aria-hidden="true">🧹</span>
               <strong>Façade / Ravalement</strong>
             </div>
             <div class="calc-option calc-option--toggle" data-value="chauffage">
-              <span class="calc-option__icon">🔥</span>
+              <span class="calc-option__icon" aria-hidden="true">🔥</span>
               <strong>Chauffage / Climatisation</strong>
             </div>
             <div class="calc-option calc-option--toggle" data-value="cloisons">
-              <span class="calc-option__icon">🧱</span>
+              <span class="calc-option__icon" aria-hidden="true">🧱</span>
               <strong>Cloisons / Agencement</strong>
             </div>
           </div>
@@ -257,22 +267,22 @@
           <p class="calc-step__desc">Le standing des matériaux et des prestations choisies.</p>
           <div class="calc-options">
             <div class="calc-option" data-value="eco">
-              <span class="calc-option__icon">💰</span>
+              <span class="calc-option__icon" aria-hidden="true">💰</span>
               <strong>Économique</strong>
               <small>Matériaux entrée de gamme, fonctionnel avant tout</small>
             </div>
             <div class="calc-option" data-value="standard">
-              <span class="calc-option__icon">⭐</span>
+              <span class="calc-option__icon" aria-hidden="true">⭐</span>
               <strong>Standard</strong>
               <small>Bon rapport qualité-prix, marques courantes</small>
             </div>
             <div class="calc-option" data-value="moyen_haut">
-              <span class="calc-option__icon">⭐⭐</span>
+              <span class="calc-option__icon" aria-hidden="true">⭐⭐</span>
               <strong>Moyen / Haut de gamme</strong>
               <small>Matériaux de qualité, finitions soignées</small>
             </div>
             <div class="calc-option" data-value="premium">
-              <span class="calc-option__icon">⭐⭐⭐</span>
+              <span class="calc-option__icon" aria-hidden="true">⭐⭐⭐</span>
               <strong>Premium / Luxe</strong>
               <small>Matériaux haut de gamme, sur mesure, prestations premium</small>
             </div>
@@ -285,22 +295,22 @@
           <p class="calc-step__desc">Ces éléments peuvent impacter le coût final (choix multiples).</p>
           <div class="calc-options calc-options--multi">
             <div class="calc-option calc-option--toggle" data-value="acces_difficile">
-              <span class="calc-option__icon">🪜</span>
+              <span class="calc-option__icon" aria-hidden="true">🪜</span>
               <strong>Accès difficile</strong>
               <small>Étage sans ascenseur, ruelle étroite</small>
             </div>
             <div class="calc-option calc-option--toggle" data-value="amiante">
-              <span class="calc-option__icon">⚠️</span>
+              <span class="calc-option__icon" aria-hidden="true">⚠️</span>
               <strong>Amiante / Plomb</strong>
               <small>Désamiantage, déplombage nécessaire</small>
             </div>
             <div class="calc-option calc-option--toggle" data-value="monument">
-              <span class="calc-option__icon">🏛️</span>
+              <span class="calc-option__icon" aria-hidden="true">🏛️</span>
               <strong>Zone protégée / ABF</strong>
               <small>Bâtiment de France, secteur sauvegardé</small>
             </div>
             <div class="calc-option calc-option--toggle" data-value="permis">
-              <span class="calc-option__icon">📋</span>
+              <span class="calc-option__icon" aria-hidden="true">📋</span>
               <strong>Permis de construire</strong>
               <small>Modification de façade, extension, changement d'usage</small>
             </div>
@@ -316,13 +326,16 @@
             <div class="calc-result__breakdown" id="calcBreakdown"></div>
             <div class="calc-result__summary" id="calcSummary"></div>
             <div style="display:flex;gap:var(--space-sm);justify-content:center;flex-wrap:wrap;margin-top:var(--space-md);">
-              <a href="reservation.html" class="btn btn--cta">Affiner avec un expert gratuit</a>
+              <button type="button" class="btn btn--cta" id="calcCallbackBtn">
+                <i data-lucide="phone-call" style="width:18px;height:18px;"></i>
+                Être rappelé
+              </button>
               <a href="tel:0617026769" class="btn btn--outline">
                 <i data-lucide="phone" style="width:18px;height:18px;"></i>
                 06 17 02 67 69
               </a>
             </div>
-            <p class="calc-result__disclaimer">* Estimation indicative basée sur les prix moyens du marché 2025-2026 (sources : FFB, CAPEB, indices BT). Chaque projet étant unique, seul un devis personnalisé fait foi. Contactez-nous pour une évaluation précise et gratuite.</p>
+            <p class="calc-result__disclaimer">* Estimation indicative (±15 %) basée sur les prix moyens du marché 2025-2026 (sources : FFB, CAPEB, indices BT). Chaque projet étant unique, seul un devis personnalisé fait foi. Demandez à être rappelée pour une évaluation précise et gratuite.</p>
           </div>
         </div>
 
@@ -341,7 +354,7 @@
     <div class="container">
       <div class="footer__grid">
         <div>
-          <img src="img/logotype_secondaire_blanc.png" alt="Stella'Concept" class="footer__logo-img" style="height:50px;">
+          <img src="img/logotype_secondaire_blanc.png" alt="Stella'Concept" class="footer__logo-img" loading="lazy" style="height:50px;">
           <p class="footer__text">Accompagnement personnalisé pour vos projets de travaux et transitions de vie en Charente.</p>
         </div>
         <div>
@@ -395,6 +408,10 @@
     </div>
   </footer>
 
+  <script>
+    window.BOOKING_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby4AAupAN5bMDHmowJank4It35Eg_Mbjlryrfqm_m0q_JJlQfjLT67aokKAt-maJ-o8hQ/exec';
+  </script>
+
   <script src="https://unpkg.com/lucide@0.344.0/dist/umd/lucide.js"></script>
   <script src="js/main.js"></script>
   <script src="js/animations.js"></script>
@@ -433,13 +450,8 @@
       cloisons:     { min: 35,  max: 80,   label: 'Cloisons / Agencement' }
     };
 
-    // Multiplicateurs régionaux
-    const COEFF_REGION = {
-      paris_idf:        1.35,
-      grande_metropole:  1.15,
-      ville_moyenne:     1.00,
-      rural:             0.92
-    };
+    // Coefficient local (Charente + départements limitrophes — légèrement sous la référence)
+    const COEFF_LOCAL = 0.98;
 
     // Multiplicateurs âge du bâtiment
     const COEFF_AGE = {
@@ -470,7 +482,6 @@
       maison: 'Maison individuelle', appartement: 'Appartement', local_pro: 'Local professionnel', dependance: 'Dépendance / Annexe',
       rafraichissement: 'Rafraîchissement', renovation_partielle: 'Rénovation partielle', renovation_complete: 'Rénovation complète', renovation_lourde: 'Rénovation lourde',
       avant_1950: 'Avant 1950', '1950_1990': '1950-1990', '1990_2010': '1990-2010', apres_2010: 'Après 2010',
-      paris_idf: 'Paris / Île-de-France', grande_metropole: 'Grande métropole', ville_moyenne: 'Ville moyenne / Province', rural: 'Zone rurale',
       eco: 'Économique', standard: 'Standard', moyen_haut: 'Moyen-haut de gamme', premium: 'Premium / Luxe',
       acces_difficile: 'Accès difficile', amiante: 'Amiante/Plomb', monument: 'Zone protégée ABF', permis: 'Permis de construire'
     };
@@ -480,7 +491,8 @@
     // =============================================
     const TOTAL_STEPS = 8;
     let step = 1;
-    let data = { bien: null, nature: null, surface: 80, age: null, region: null, postes: [], finition: null, contraintes: [] };
+    let data = { bien: null, nature: null, surface: 80, age: null, commune: '', postes: [], finition: null, contraintes: [] };
+    let lastEstimation = null;
 
     // =============================================
     // DOM
@@ -533,7 +545,7 @@
         case 2: enabled = !!data.nature; break;
         case 3: enabled = true; break; // slider always has value
         case 4: enabled = !!data.age; break;
-        case 5: enabled = !!data.region; break;
+        case 5: enabled = (data.commune || '').trim().length >= 2; break;
         case 6: enabled = true; break; // optional multi
         case 7: enabled = !!data.finition; break;
         case 8: enabled = true; break; // optional multi
@@ -563,8 +575,16 @@
     setupSingleSelect(1, 'bien');
     setupSingleSelect(2, 'nature');
     setupSingleSelect(4, 'age');
-    setupSingleSelect(5, 'region');
     setupSingleSelect(7, 'finition');
+
+    // Étape 5 : input commune (texte libre + datalist)
+    const communeInput = document.getElementById('calcCommune');
+    if (communeInput) {
+      communeInput.addEventListener('input', () => {
+        data.commune = communeInput.value;
+        updateNextState();
+      });
+    }
 
     // =============================================
     // OPTIONS (multi select / toggle)
@@ -598,15 +618,15 @@
     function calculate() {
       const surface = data.surface;
       const base = PRIX_BASE[data.nature] || [500, 1000];
-      const coeffRegion = COEFF_REGION[data.region] || 1;
+      const coeffRegion = COEFF_LOCAL;
       const coeffAge = COEFF_AGE[data.age] || 1;
       const coeffFinition = COEFF_FINITION[data.finition] || 1;
 
-      // 1. Coût de base
+      // 1. Coût de base (fourchette brute pour le détail)
       let minBase = base[0] * surface * coeffRegion * coeffAge * coeffFinition;
       let maxBase = base[1] * surface * coeffRegion * coeffAge * coeffFinition;
 
-      // 2. Postes spécifiques
+      // 2. Postes spécifiques (fourchette brute pour le détail)
       let minPostes = 0, maxPostes = 0;
       const detailPostes = [];
       data.postes.forEach(p => {
@@ -634,14 +654,22 @@
         surcoût += SURCOUT_CONTRAINTES[c] || 0;
       });
 
-      let totalMin = Math.round((minBase + minPostes) * (1 + surcoût));
-      let totalMax = Math.round((maxBase + maxPostes) * (1 + surcoût));
+      // 4. Resserrement : ±15% autour de la médiane pour l'estimation finale
+      const midBase = (minBase + maxBase) / 2;
+      const midPostes = (minPostes + maxPostes) / 2;
+      const midTotal = (midBase + midPostes) * (1 + surcoût);
+      const SPREAD = 0.15;
+      let totalMin = Math.round(midTotal * (1 - SPREAD));
+      let totalMax = Math.round(midTotal * (1 + SPREAD));
 
       // Arrondir aux milliers
       totalMin = Math.round(totalMin / 1000) * 1000;
       totalMax = Math.round(totalMax / 1000) * 1000;
 
       const fmt = n => n.toLocaleString('fr-FR');
+
+      // Mémoriser pour le callback
+      lastEstimation = { min: totalMin, max: totalMax, surcout: surcoût, detailPostes: detailPostes, midBase: midBase };
 
       // Résultat principal
       document.getElementById('calcResultRange').innerHTML = `Entre ${fmt(totalMin)}&nbsp;&euro; et ${fmt(totalMax)}&nbsp;&euro;`;
@@ -655,15 +683,157 @@
       if (surcoût > 0) {
         breakdownHTML += `<div class="calc-breakdown-item calc-breakdown-item--extra"><span>Surcoûts contraintes (+${Math.round(surcoût*100)}%)</span><span>inclus</span></div>`;
       }
-      breakdownHTML += `<div class="calc-breakdown-item calc-breakdown-item--total"><span>Estimation totale</span><span>${fmt(totalMin)}&nbsp;-&nbsp;${fmt(totalMax)}&nbsp;&euro;</span></div>`;
+      breakdownHTML += `<div class="calc-breakdown-item calc-breakdown-item--total"><span>Estimation resserrée (±15&nbsp;%)</span><span>${fmt(totalMin)}&nbsp;-&nbsp;${fmt(totalMax)}&nbsp;&euro;</span></div>`;
       breakdownHTML += '</div>';
       document.getElementById('calcBreakdown').innerHTML = breakdownHTML;
 
       // Résumé
-      let tags = [LABELS[data.bien], LABELS[data.nature], surface + ' m²', LABELS[data.age], LABELS[data.region], 'Finition ' + LABELS[data.finition]];
+      const commune = (data.commune || '').trim();
+      let tags = [LABELS[data.bien], LABELS[data.nature], surface + ' m²', LABELS[data.age]];
+      if (commune) tags.push(commune);
+      tags.push('Finition ' + LABELS[data.finition]);
       data.contraintes.forEach(c => tags.push(LABELS[c]));
       let summaryHTML = '<div class="calc-tags">' + tags.map(t => `<span class="calc-tag">${t}</span>`).join('') + '</div>';
       document.getElementById('calcSummary').innerHTML = summaryHTML;
+    }
+
+    // =============================================
+    // MODAL "ÊTRE RAPPELÉ"
+    // =============================================
+    const callbackBtn = document.getElementById('calcCallbackBtn');
+    if (callbackBtn) {
+      callbackBtn.addEventListener('click', openCallbackModal);
+    }
+
+    function openCallbackModal() {
+      const existing = document.getElementById('callbackModal');
+      if (existing) existing.remove();
+
+      const modal = document.createElement('div');
+      modal.id = 'callbackModal';
+      modal.className = 'callback-modal';
+      modal.innerHTML = `
+        <div class="callback-modal__overlay" data-close></div>
+        <div class="callback-modal__card" role="dialog" aria-modal="true" aria-labelledby="callbackTitle">
+          <button type="button" class="callback-modal__close" aria-label="Fermer" data-close>&times;</button>
+          <h3 id="callbackTitle">Je vous rappelle</h3>
+          <p class="callback-modal__intro">Je vous rappelle sous 24 à 48 heures pour affiner l'estimation avec vous. Votre demande inclut automatiquement les réponses du calculateur.</p>
+          <form id="callbackForm" class="callback-form" novalidate>
+            <div class="callback-form__row">
+              <label for="cb-civility">Civilité *</label>
+              <select id="cb-civility" name="civility" required>
+                <option value="">Choisir…</option>
+                <option value="Madame">Madame</option>
+                <option value="Monsieur">Monsieur</option>
+                <option value="Autre">Autre</option>
+              </select>
+            </div>
+            <div class="callback-form__row">
+              <label for="cb-name">Nom *</label>
+              <input id="cb-name" type="text" name="name" required autocomplete="name" placeholder="Votre nom">
+            </div>
+            <div class="callback-form__row">
+              <label for="cb-phone">Téléphone *</label>
+              <input id="cb-phone" type="tel" name="phone" required autocomplete="tel" placeholder="06 12 34 56 78">
+            </div>
+            <div class="callback-form__row">
+              <label for="cb-email">Email (facultatif)</label>
+              <input id="cb-email" type="email" name="email" autocomplete="email" placeholder="votre@email.fr">
+            </div>
+            <div class="callback-form__row">
+              <label for="cb-preferred">Créneau préféré</label>
+              <input id="cb-preferred" type="text" name="preferred_slot" placeholder="Ex : après 18h en semaine">
+            </div>
+            <div class="callback-form__actions">
+              <button type="button" class="btn btn--outline" data-close>Annuler</button>
+              <button type="submit" class="btn btn--cta">Confirmer la demande</button>
+            </div>
+            <p class="callback-form__error" id="callbackError" hidden></p>
+          </form>
+          <div class="callback-form__success" id="callbackSuccess" hidden>
+            <div class="callback-form__success-icon">✓</div>
+            <h4>Demande envoyée !</h4>
+            <p>Je vous rappelle sous 24 à 48h au numéro indiqué. À très vite.</p>
+            <button type="button" class="btn btn--outline" data-close>Fermer</button>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(modal);
+      requestAnimationFrame(() => modal.classList.add('is-open'));
+
+      modal.addEventListener('click', (e) => {
+        if (e.target.hasAttribute('data-close')) closeCallbackModal();
+      });
+
+      const form = modal.querySelector('#callbackForm');
+      form.addEventListener('submit', handleCallbackSubmit);
+    }
+
+    function closeCallbackModal() {
+      const modal = document.getElementById('callbackModal');
+      if (!modal) return;
+      modal.classList.remove('is-open');
+      setTimeout(() => modal.remove(), 280);
+    }
+
+    async function handleCallbackSubmit(e) {
+      e.preventDefault();
+      const form = e.currentTarget;
+      const errorBox = document.getElementById('callbackError');
+      errorBox.hidden = true;
+
+      const payload = {
+        action: 'callback',
+        civility: form.civility.value.trim(),
+        name: form.name.value.trim(),
+        phone: form.phone.value.trim(),
+        email: form.email.value.trim(),
+        preferred_slot: form.preferred_slot.value.trim(),
+        calculator: {
+          bien: LABELS[data.bien] || data.bien,
+          nature: LABELS[data.nature] || data.nature,
+          surface: data.surface,
+          age: LABELS[data.age] || data.age,
+          commune: data.commune,
+          finition: LABELS[data.finition] || data.finition,
+          postes: data.postes.map(p => (COUT_POSTES[p] && COUT_POSTES[p].label) || p),
+          contraintes: data.contraintes.map(c => LABELS[c] || c),
+          estimation_min: lastEstimation ? lastEstimation.min : null,
+          estimation_max: lastEstimation ? lastEstimation.max : null
+        }
+      };
+
+      if (!payload.civility || !payload.name || !payload.phone) {
+        errorBox.textContent = 'Merci de compléter civilité, nom et téléphone.';
+        errorBox.hidden = false;
+        return;
+      }
+
+      const submitBtn = form.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Envoi…';
+
+      try {
+        const url = window.BOOKING_SCRIPT_URL;
+        if (url) {
+          await fetch(url, {
+            method: 'POST',
+            redirect: 'follow',
+            headers: { 'Content-Type': 'text/plain' },
+            body: JSON.stringify(payload)
+          });
+        } else {
+          // mode démo : on simule
+          await new Promise(r => setTimeout(r, 600));
+        }
+        form.style.display = 'none';
+        document.getElementById('callbackSuccess').hidden = false;
+      } catch (err) {
+        errorBox.textContent = "Désolé, l'envoi a échoué. Merci de m'appeler au 06 17 02 67 69.";
+        errorBox.hidden = false;
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Confirmer la demande';
+      }
     }
 
     // Init
@@ -768,6 +938,185 @@
   }
   @media (max-width: 480px) {
     .calc-options--multi { grid-template-columns: 1fr; }
+  }
+
+  /* --- Étape Localisation --- */
+  .calc-location {
+    max-width: 480px;
+    margin: 0 auto;
+    text-align: left;
+  }
+  .calc-location__label {
+    display: block;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+  }
+  .calc-location__input {
+    width: 100%;
+    padding: 0.95rem 1.1rem;
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    color: var(--color-dark);
+    background: #fff;
+    border: 2px solid var(--color-gray-light);
+    border-radius: var(--radius-md);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .calc-location__input:focus {
+    outline: none;
+    border-color: var(--color-magenta);
+    box-shadow: 0 0 0 4px rgba(192, 66, 138, 0.12);
+  }
+  .calc-location__hint {
+    margin-top: 0.6rem;
+    color: var(--color-gray);
+    font-size: 0.85rem;
+    font-family: var(--font-heading);
+  }
+
+  /* --- Modal "Être rappelé" --- */
+  .callback-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.28s ease;
+  }
+  .callback-modal.is-open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .callback-modal__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(42, 35, 44, 0.6);
+    backdrop-filter: blur(4px);
+  }
+  .callback-modal__card {
+    position: relative;
+    max-width: 480px;
+    width: calc(100% - 2rem);
+    margin: 6vh auto 0;
+    background: #fff;
+    border-radius: var(--radius-lg);
+    padding: 1.6rem 1.6rem 1.8rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+    max-height: 88vh;
+    overflow-y: auto;
+  }
+  .callback-modal.is-open .callback-modal__card {
+    transform: translateY(0);
+  }
+  .callback-modal__close {
+    position: absolute;
+    top: 0.6rem;
+    right: 0.8rem;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    line-height: 1;
+    color: var(--color-gray);
+    cursor: pointer;
+    padding: 0.2rem 0.5rem;
+  }
+  .callback-modal__close:hover {
+    color: var(--color-magenta);
+  }
+  .callback-modal__card h3 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.35rem;
+    color: var(--color-primary);
+    margin: 0 0 0.6rem;
+  }
+  .callback-modal__intro {
+    color: var(--color-gray);
+    font-size: 0.92rem;
+    margin: 0 0 1.2rem;
+    line-height: 1.55;
+  }
+  .callback-form__row {
+    display: block;
+    margin-bottom: 0.9rem;
+  }
+  .callback-form__row > label {
+    display: block;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.82rem;
+    color: var(--color-primary);
+    margin-bottom: 0.3rem;
+  }
+  .callback-form__row input,
+  .callback-form__row select {
+    width: 100%;
+    padding: 0.7rem 0.9rem;
+    font-family: var(--font-body);
+    font-size: 0.98rem;
+    color: var(--color-dark);
+    background: #fff;
+    border: 2px solid var(--color-gray-light);
+    border-radius: var(--radius-md);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .callback-form__row input:focus,
+  .callback-form__row select:focus {
+    outline: none;
+    border-color: var(--color-magenta);
+    box-shadow: 0 0 0 3px rgba(192, 66, 138, 0.12);
+  }
+  .callback-form__actions {
+    display: flex;
+    gap: 0.6rem;
+    justify-content: flex-end;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+  }
+  .callback-form__actions .btn {
+    width: auto;
+  }
+  .callback-form__error {
+    margin-top: 0.8rem;
+    padding: 0.6rem 0.8rem;
+    background: rgba(192, 66, 138, 0.1);
+    color: var(--color-magenta);
+    border-radius: var(--radius-sm);
+    font-size: 0.88rem;
+  }
+  .callback-form__success {
+    text-align: center;
+    padding: 0.5rem 0;
+  }
+  .callback-form__success-icon {
+    width: 54px;
+    height: 54px;
+    margin: 0 auto 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-orange), var(--color-magenta));
+    color: #fff;
+    font-size: 1.6rem;
+    font-weight: 700;
+  }
+  .callback-form__success h4 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--color-primary);
+    margin: 0 0 0.5rem;
+  }
+  .callback-form__success p {
+    color: var(--color-gray);
+    font-size: 0.92rem;
+    margin: 0 0 1rem;
   }
   </style>
 

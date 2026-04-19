@@ -1,11 +1,27 @@
-const CACHE_NAME = 'stella-concept-v3';
+const CACHE_NAME = 'stella-concept-v4';
 const ASSETS = [
   '/',
   '/index.html',
+  '/services-travaux.html',
+  '/services-transition.html',
+  '/a-propos.html',
+  '/faq.html',
+  '/contact.html',
+  '/reservation.html',
+  '/calculateur.html',
+  '/tarifs.html',
+  '/zone-intervention.html',
+  '/404.html',
   '/css/style.css',
   '/css/animations.css',
   '/js/main.js',
   '/js/animations.js',
+  '/js/booking.js',
+  '/js/parallax-steps.js',
+  '/img/logotype_primaire.png',
+  '/img/logotype_secondaire_blanc.png',
+  '/img/favicon.svg',
+  '/img/og-image.svg',
   '/manifest.json'
 ];
 

@@ -18,8 +18,23 @@
   ];
   const DAYS_FR = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
 
-  // Demo slots used when no backend URL is configured
-  const DEMO_SLOTS = ['09:00', '10:00', '11:00', '14:00', '15:00', '16:00', '17:00'];
+  // Demo slots used when no backend URL is configured (2h each)
+  const DEMO_SLOTS = ['09:00', '11:00', '12:00', '14:00', '16:00'];
+
+  // Duree d'un creneau en minutes (synchronise avec le backend)
+  const SLOT_MINUTES = 120;
+
+  /** Format "09:00" + 2h → "09:00 – 11:00" */
+  function formatSlotRange(start) {
+    const parts = start.split(':');
+    const h = parseInt(parts[0], 10);
+    const m = parseInt(parts[1], 10);
+    const total = h * 60 + m + SLOT_MINUTES;
+    const eh = Math.floor(total / 60) % 24;
+    const em = total % 60;
+    const pad = n => String(n).padStart(2, '0');
+    return start + ' – ' + pad(eh) + ':' + pad(em);
+  }
 
   // Subject options for the booking form
   const SUBJECTS = [
@@ -373,6 +388,8 @@
     form.className = 'booking__form';
     form.setAttribute('novalidate', '');
 
+    // --- Civility ---
+    form.appendChild(buildCivilityField());
     // --- Name ---
     form.appendChild(buildField('name', 'Nom', 'text', 'Votre nom complet'));
     // --- Phone ---
@@ -431,6 +448,47 @@
     return group;
   }
 
+  /** Create the civility select field (Madame / Monsieur / Autre) */
+  function buildCivilityField() {
+    const group = document.createElement('div');
+    group.className = 'form__group';
+
+    const lbl = document.createElement('label');
+    lbl.className = 'form__label';
+    lbl.setAttribute('for', 'booking-civility');
+    lbl.innerHTML = 'Civilité <span class="required">*</span>';
+
+    const select = document.createElement('select');
+    select.className = 'form__select';
+    select.id = 'booking-civility';
+    select.name = 'civility';
+    select.required = true;
+
+    const options = [
+      { value: '', label: 'Choisir…' },
+      { value: 'Madame', label: 'Madame' },
+      { value: 'Monsieur', label: 'Monsieur' },
+      { value: 'Autre', label: 'Autre' }
+    ];
+
+    options.forEach(o => {
+      const opt = document.createElement('option');
+      opt.value = o.value;
+      opt.textContent = o.label;
+      if (!o.value) { opt.disabled = true; opt.selected = true; }
+      select.appendChild(opt);
+    });
+
+    const error = document.createElement('span');
+    error.className = 'form__error';
+    error.dataset.for = 'civility';
+
+    group.appendChild(lbl);
+    group.appendChild(select);
+    group.appendChild(error);
+    return group;
+  }
+
   /** Create the subject select field */
   function buildSelect(name, label) {
     const group = document.createElement('div');
@@ -479,7 +537,7 @@
         </svg>
       </div>
       <h3 class="booking__success-title">Réservation confirmée !</h3>
-      <p class="booking__success-text">Vous recevrez un email de confirmation avec les détails de votre rendez-vous.</p>
+      <p class="booking__success-text">Vous recevez un email de confirmation avec les détails. Estelle vous appellera au numéro que vous avez indiqué.</p>
       <button class="btn btn--outline booking__restart" type="button">Faire une nouvelle réservation</button>
     `;
 
@@ -540,7 +598,8 @@
       const btn = document.createElement('button');
       btn.type = 'button';
       btn.className = 'slot';
-      btn.textContent = time;
+      btn.textContent = formatSlotRange(time);
+      btn.dataset.time = time;
       btn.addEventListener('click', () => {
         selectedSlot = time;
         // Remove previous selection
@@ -560,6 +619,7 @@
     clearFormErrors();
 
     const form = e.target;
+    const civility = form.querySelector('#booking-civility').value;
     const name = form.querySelector('#booking-name').value.trim();
     const phone = form.querySelector('#booking-phone').value.trim();
     const email = form.querySelector('#booking-email').value.trim();
@@ -567,6 +627,10 @@
 
     let valid = true;
 
+    if (!civility) {
+      showFieldError('civility', 'Veuillez choisir une civilité.');
+      valid = false;
+    }
     if (!name) {
       showFieldError('name', 'Le nom est requis.');
       valid = false;
@@ -598,6 +662,7 @@
       const result = await submitBooking({
         date: formatDate(selectedDate),
         time: selectedSlot,
+        civility,
         name,
         phone,
         email,

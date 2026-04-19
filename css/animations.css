@@ -228,20 +228,6 @@ body {
 
 /* --- Nav link active dot --- (désactivé) */
 
-/* --- Floating animation for WhatsApp --- */
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
-}
-
-.whatsapp-btn {
-  animation: float 3s ease-in-out infinite;
-}
-
-.whatsapp-btn:hover {
-  animation: none;
-}
-
 /* --- Section divider wave --- */
 .section--primary::before {
   content: '';

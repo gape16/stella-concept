@@ -3,10 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Diagnostic projet - Stella'Concept | Quel accompagnement pour vous ?</title>
+  <meta name="robots" content="index, follow">
+  <title>Diagnostic projet personnalisé | Stella'Concept</title>
   <meta name="description" content="Répondez à notre questionnaire détaillé et recevez une recommandation personnalisée. Accompagnement travaux et transition de vie à Angoulême.">
   <meta property="og:title" content="Diagnostic projet - Stella'Concept | Quel accompagnement pour vous ?">
   <meta property="og:description" content="Répondez à ce questionnaire détaillé et recevez une recommandation personnalisée.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://stella-concept.fr/quiz.html">
+  <meta property="og:site_name" content="Stella'Concept">
+  <meta property="og:locale" content="fr_FR">
   <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#544957">
@@ -18,7 +23,9 @@
   <link rel="stylesheet" href="css/animations.css">
   <style>:root { --accent: #C0428A; }</style>
   <link rel="canonical" href="https://stella-concept.fr/quiz.html">
-  <meta property="og:image" content="https://stella-concept.fr/img/og-image.png">
+  <meta property="og:image" content="https://stella-concept.fr/img/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@stellaconcept">
   <style>
     /* Quiz-specific styles extending calculator pattern */
     .quiz-card {
@@ -282,7 +289,7 @@
   <nav class="nav" aria-label="Navigation principale">
     <div class="container nav__inner">
       <a href="index.html" class="nav__logo" aria-label="Stella'Concept - Accueil">
-        <img src="img/logotype_secondaire.svg" alt="Stella'Concept" class="nav__logo-img">
+        <img src="img/logotype_primaire.png" alt="Stella'Concept" class="nav__logo-img">
       </a>
       <div class="nav__links" role="menubar">
         <a href="index.html" role="menuitem">Accueil</a>
@@ -622,7 +629,7 @@
       <div class="footer__grid">
         <div>
           <div class="footer__logo">
-            <img src="img/logotype_secondaire_blanc.png" alt="Stella'Concept" class="footer__logo-img" style="height:40px;">
+            <img src="img/logotype_secondaire_blanc.png" alt="Stella'Concept" class="footer__logo-img" loading="lazy" style="height:40px;">
           </div>
           <p class="footer__text">Accompagnement personnalisé pour vos projets de travaux et transitions de vie en Charente.</p>
         </div>
@@ -1046,7 +1053,7 @@
             title: 'Séance Découverte Gratuite',
             desc: 'Pas de souci si vous ne savez pas encore exactement ce dont vous avez besoin ! Nous vous proposons un premier échange gratuit et sans engagement pour comprendre votre situation et vous orienter vers la solution la plus adaptée.',
             serviceLink: 'contact.html',
-            serviceName: 'Nous contacter'
+            serviceName: 'Me contacter'
           };
         }
 
@@ -1065,10 +1072,10 @@
         var notice = document.getElementById('resNotice');
         if (emailSent) {
           notice.style.display = 'block';
-          notice.textContent = 'Nous avons bien reçu vos réponses ! Estelle vous recontactera sous 24h avec une recommandation détaillée.';
+          notice.textContent = 'Nous avons bien reçu vos réponses ! Estelle vous recontactera sous 24 à 48h avec une recommandation détaillée.';
         } else {
           notice.style.display = 'block';
-          notice.textContent = 'Nous avons bien noté vos réponses et vous recontacterons sous 24h.';
+          notice.textContent = 'Nous avons bien noté vos réponses et vous recontacterons sous 24 à 48h.';
         }
         var serviceLink = document.getElementById('resServiceLink');
         serviceLink.innerHTML = '<a href="' + result.serviceLink + '" style="color:var(--accent);text-decoration:underline;font-weight:500;">' + result.serviceName + '</a>';
