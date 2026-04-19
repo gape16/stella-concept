@@ -29,8 +29,8 @@ var CALENDAR_ID = 'contact.stellaconcept@gmail.com';
 var NOTIFICATION_EMAIL = 'contact.stellaconcept@gmail.com';
 var SLOT_DURATION = 120; // Duree d'un creneau en minutes (2h)
 var TIMEZONE = 'Europe/Paris';
-var SITE_URL = 'https://stella-concept.fr';
-var LOGO_URL = 'https://stella-concept.fr/img/logotype_primaire.png';
+var SITE_URL = 'https://www.stella-concept.fr';
+var LOGO_URL = 'https://www.stella-concept.fr/img/logotype_primaire.png';
 var PHONE_DISPLAY = '06 17 02 67 69';
 
 // Creneaux par defaut de 2h, lun-jeu inclusifs, ven matin seulement, WE ferme.
