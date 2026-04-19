@@ -16,11 +16,25 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
     }, {
-      threshold: 0.15,
+      // threshold 0 → déclenche dès qu'un pixel est visible.
+      // Évite le bug des pages avec un unique grand conteneur .reveal
+      // (ex. pages légales) où 15 % du bloc ne tient pas dans le viewport.
+      threshold: 0,
       rootMargin: '0px 0px -40px 0px'
     });
 
-    revealElements.forEach(el => revealObserver.observe(el));
+    // Sécurité : si un élément .reveal est DÉJÀ dans le viewport au chargement,
+    // on le révèle immédiatement sans attendre le callback de l'observer
+    // (certains navigateurs retardent légèrement la première fire).
+    const viewH = window.innerHeight || document.documentElement.clientHeight;
+    revealElements.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < viewH && rect.bottom > 0) {
+        el.classList.add('is-visible');
+      } else {
+        revealObserver.observe(el);
+      }
+    });
   }
 
   // --- Carrousel témoignages ---
