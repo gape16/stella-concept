@@ -43,18 +43,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.stella-concept.fr/realisations.html</loc>
-    <lastmod>2026-04-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.stella-concept.fr/blog.html</loc>
-    <lastmod>2026-04-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://www.stella-concept.fr/reservation.html</loc>
     <lastmod>2026-04-19</lastmod>
     <changefreq>monthly</changefreq>
